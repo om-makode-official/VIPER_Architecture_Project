@@ -21,13 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let compositionRoot = CompositionRoot()
         
         let window = UIWindow(windowScene: windowScene)
-                let navigationController = UINavigationController()
+        let navigationController = UINavigationController()
                 
-                compositionRoot.createInitialModule(in: navigationController)
+        compositionRoot.createInitialModule(in: navigationController)
                 
-                window.rootViewController = navigationController
-                window.makeKeyAndVisible()
-                self.window = window
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

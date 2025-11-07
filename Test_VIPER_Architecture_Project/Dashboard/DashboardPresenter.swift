@@ -14,9 +14,30 @@ protocol DashboardViewToPresenterProtocol: AnyObject {
 
 class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
     
-    @Published var welcomeMessage = ""
+    @Published var images: [RandomImage] = []
+    @Published var isLoading = false
+    
+    private let interactor: DashboardInteractorProtocol
+    
+    init(interactor: DashboardInteractorProtocol) {
+        self.interactor = interactor
+    }
     
     func viewDidLoad() {
-        welcomeMessage = "Welcome to Dashboard"
+        Task {
+            await fetchImages()
+        }
     }
+    
+    @MainActor
+        private func fetchImages() async {
+            isLoading = true
+            do {
+                let result = try await interactor.fetchImages()
+                images = result
+            } catch {
+                print("Error fetching images: \(error)")
+            }
+            isLoading = false
+        }
 }

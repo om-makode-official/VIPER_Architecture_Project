@@ -12,7 +12,9 @@ import SwiftUI
 class DashboardRouter {
     func createModule() -> UIViewController {
         
-        let presenter = DashboardPresenter()
+        let networkHandler = NetworkHandler()
+        let interactor = DashboardInteractor(networkHandler: networkHandler)
+        let presenter = DashboardPresenter(interactor: interactor)
         let view = DashboardView(presenter: presenter)
         
         return UIHostingController(rootView: view)

@@ -14,13 +14,10 @@ class DashboardBuilder {
     func createModule() -> UIViewController {
         
         
-        let presenter = DashboardPresenter()
+        let networkHandler = NetworkHandler()
+        let interactor = DashboardInteractor(networkHandler: networkHandler)
+        let presenter = DashboardPresenter(interactor: interactor)
         let view = DashboardView(presenter: presenter)
-        
-        
-        
-        let viewController = UIHostingController(rootView: view)
-        
-        return viewController
+        return UIHostingController(rootView: view)
     }
 }

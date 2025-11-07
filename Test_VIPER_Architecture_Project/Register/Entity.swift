@@ -12,3 +12,8 @@ struct Entity: Codable {
     let password: String
 }
 
+struct RandomImage: Codable, Identifiable {
+    let id: String
+    let author: String
+    let download_url: String
+}

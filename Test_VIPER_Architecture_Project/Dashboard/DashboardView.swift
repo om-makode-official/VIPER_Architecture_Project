@@ -17,13 +17,43 @@ struct DashboardView: View {
     
     var body: some View {
         VStack {
-            
-            Text(presenter.welcomeMessage)
-                .font(.title)
-                .padding()
+                if presenter.isLoading {
+                    ProgressView("Loadinggggg...")
+                        .padding()
+                } else {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(presenter.images) { image in
+                                VStack {
+                                    AsyncImage(url: URL(string: image.download_url)) { phase in
+                                        
+                                        if let img = phase.image { img
+                                                .resizable()
+                                                .scaledToFit()
+                                                .cornerRadius(12)
+                                                .padding()
+                                            
+                                        }
+                                        else if phase.error != nil {
+                                            Text("Error loading image")
+                                            
+                                        }
+                                        else {
+                                            ProgressView()
+                                        }
+                                    }
+                                    Text(image.author)
+                                        .font(.subheadline)
+                                        
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .onAppear {
+                presenter.viewDidLoad()
+            }
+            .navigationTitle("Random Images")
         }
-        .onAppear {
-            presenter.viewDidLoad()
-        }
-    }
 }

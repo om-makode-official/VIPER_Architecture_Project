@@ -32,6 +32,7 @@
 		AC28F2BB2EBE0BE9003B66B8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */; };
 		AC28F2BD2EBE0C2D003B66B8 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */; };
 		AC28F2BF2EBE16E7003B66B8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BE2EBE16E7003B66B8 /* Entity.swift */; };
+		ACB8ECC62EBE2E72009BBAEE /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8ECC52EBE2E72009BBAEE /* DashboardInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		AC28F2BE2EBE16E7003B66B8 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		ACB8ECC52EBE2E72009BBAEE /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			children = (
 				AC28F29F2EBDDC06003B66B8 /* DashboardPresenter.swift */,
 				AC28F29D2EBDDBE6003B66B8 /* DashboardRouter.swift */,
+				ACB8ECC52EBE2E72009BBAEE /* DashboardInteractor.swift */,
 				AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */,
 				AC28F2AB2EBDDE25003B66B8 /* DashboardBuilder.swift */,
 			);
@@ -346,6 +349,7 @@
 				AC28F26A2EBDDAE5003B66B8 /* AppDelegate.swift in Sources */,
 				AC28F2A42EBDDC74003B66B8 /* LoginRouter.swift in Sources */,
 				AC28F2BF2EBE16E7003B66B8 /* Entity.swift in Sources */,
+				ACB8ECC62EBE2E72009BBAEE /* DashboardInteractor.swift in Sources */,
 				AC28F2A02EBDDC06003B66B8 /* DashboardPresenter.swift in Sources */,
 				AC28F29C2EBDDBB8003B66B8 /* NetworkHandler.swift in Sources */,
 				AC28F26C2EBDDAE5003B66B8 /* SceneDelegate.swift in Sources */,
