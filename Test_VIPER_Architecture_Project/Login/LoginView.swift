@@ -10,8 +10,8 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var email = ""
+    @State private var password = ""
     
     @StateObject private var presenter: LoginPresenter
     
@@ -32,16 +32,15 @@ struct LoginView: View {
             SecureField("Password", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            if presenter.isLoading {
-                
-                ProgressView()
-            }
             
             Button("Login") {
                 presenter.loginButtonTapped(email: email, password: password)
             }
             .buttonStyle(.borderedProminent)
-            .padding(.top, 8)
+            
+            Button("Register"){
+                presenter.registerButtonTapped()
+            }
             
             if let error = presenter.errorMessage {
                 

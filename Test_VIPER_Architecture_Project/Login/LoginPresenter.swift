@@ -11,12 +11,13 @@ protocol LoginViewToPresenterProtocol: AnyObject {
     func loginButtonTapped(email: String, password: String)
 }
 
-protocol LoginPresenterToInteractorProtocol: AnyObject {
-    func loginUser(email: String, password: String)
+protocol LoginPresenterToInteractorProtocol {
+    func loginUser(email: String, password: String, completion: @escaping (Bool) -> Void)
 }
 
 protocol LoginPresenterToRouterProtocol: AnyObject {
     func navigateToDashboard()
+    func navigateToRegister()
 }
 
 protocol LoginInteractorToPresenterProtocol: AnyObject {
@@ -29,7 +30,6 @@ class LoginPresenter: ObservableObject, LoginViewToPresenterProtocol {
     private let interactor: LoginPresenterToInteractorProtocol
     private let router: LoginPresenterToRouterProtocol
     
-    @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
     init(interactor: LoginPresenterToInteractorProtocol,
@@ -42,16 +42,27 @@ class LoginPresenter: ObservableObject, LoginViewToPresenterProtocol {
     func loginButtonTapped(email: String, password: String) {
         
         errorMessage = nil
-        isLoading = true
-        interactor.loginUser(email: email, password: password)
+
+        interactor.loginUser(email: email, password: password){ success in
+            if success{
+                self.router.navigateToDashboard()
+            }
+            else{
+                print("Invalid Credentialss")
+            }
+        }
     }
+    func registerButtonTapped() {
+            router.navigateToRegister()
+        }
 }
 
 extension LoginPresenter: LoginInteractorToPresenterProtocol {
+    
     func loginSuccess() {
         DispatchQueue.main.async {
             
-            self.isLoading = false
+
             self.router.navigateToDashboard()
         }
     }
@@ -60,7 +71,7 @@ extension LoginPresenter: LoginInteractorToPresenterProtocol {
         
         DispatchQueue.main.async {
             
-            self.isLoading = false
+
             self.errorMessage = message
         }
     }

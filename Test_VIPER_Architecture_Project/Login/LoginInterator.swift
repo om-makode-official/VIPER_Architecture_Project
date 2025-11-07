@@ -7,8 +7,10 @@
 
 import Foundation
 
+
 class LoginInteractor: LoginPresenterToInteractorProtocol {
     
+
     weak var presenter: LoginInteractorToPresenterProtocol?
     
     private let networkHandler: NetworkHandler
@@ -19,18 +21,37 @@ class LoginInteractor: LoginPresenterToInteractorProtocol {
         
     }
     
-    func loginUser(email: String, password: String) {
+    func loginUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-            
-            
-            if email == "test@gmail.com" && password == "123456" {
-                self.presenter?.loginSuccess()
+        let defaults = UserDefaults.standard
                 
-            } else {
-                self.presenter?.loginFailed(message: "Invalid credentials")
-                
+        guard let data = defaults.data(forKey: "registeredUsers"),
+                let users = try? JSONDecoder().decode([Entity].self, from: data) else {
+            completion(false)
+            return
             }
-        }
+                
+        
+            if users.contains(where: { $0.email == email && $0.password == password }) {
+                completion(true)
+            } else {
+                completion(false)
+            }
     }
+        
+        
+        
+        
+//        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+//
+//
+//            if email == "test@gmail.com" && password == "123456" {
+//                self.presenter?.loginSuccess()
+//
+//            } else {
+//                self.presenter?.loginFailed(message: "Invalid credentials")
+//
+//            }
+//        }
+    
 }

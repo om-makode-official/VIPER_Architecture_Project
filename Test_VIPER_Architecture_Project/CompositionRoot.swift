@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CompositionRoot.swift
 //  Test_VIPER_Architecture_Project
 //
 //  Created by Sai Krishna on 11/7/25.
@@ -23,3 +23,4 @@ class CompositionRoot {
         navigationController.viewControllers = [vc]
     }
 }
+
