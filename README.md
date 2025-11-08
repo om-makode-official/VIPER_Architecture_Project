@@ -42,10 +42,10 @@ VIPER Flow (Registration Module)
 
 ### Phase 3 – Dashboard Showing Random Images
 
-In this phase, the Dashboard screen is updated
-Before, it only shows a message “Welcome to Dashboard”
-Now, it shows random images from an API "https://picsum.photos/v2/list?page=4&limit=15"
-now it shows a list of images with author names
+- In this phase, the Dashboard screen is updated
+- Before, it only shows a message “Welcome to Dashboard”
+- Now, it shows random images from an API "https://picsum.photos/v2/list?page=4&limit=15"
+- now it shows a list of images with author names
 
 - Working
 1. When the Dashboard opens, the Presenter tells the Interactor to get images
