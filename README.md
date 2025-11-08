@@ -30,7 +30,7 @@ if email == "test@gmail.com" && password == "123456" { <br>
 
 <br><br>
 
-VIPER Flow (Registration Module)
+VIPER Flow (Registration)
 
 - RegisterView – Shows two TextField and Register button
 - RegisterPresenter – Connects the View and Interactor. Sends user input to the Interactor and handles results
@@ -47,7 +47,20 @@ VIPER Flow (Registration Module)
 - Now, it shows random images from an API "https://picsum.photos/v2/list?page=4&limit=15"
 - now it shows a list of images with author names
 
-- Working
+<br>
+
+Working
 1. When the Dashboard opens, the Presenter tells the Interactor to get images
 2. The Interactor calls the NetworkHandler which fetches the data from the API
 3. Once data is received, the Presenter updates the images and the view shows images on screen
+
+<br><br>
+VIPER Flow (Dashboard)
+
+- DashboardView – Shows the images
+- DashboardPresenter – gets images from the Interactor
+- DashboardInteractor – Connects with the NetworkHandler to fetch data
+- DashboardBuilder – Connects all parts together to build the Dashboard module
+- NetworkHandler – Calls the API and decodes the image data
+
+
