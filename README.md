@@ -1,4 +1,4 @@
-I created this iOS project using the VIPER architecture and built it in different phases. It started with a simple login and dashboard, then I added a user registration feature that saves data in UserDefaults, and later updated the dashboard to display random images from an API.
+I created this project using the VIPER architecture and built it in different phases. It started with a simple login and dashboard, then I added a user registration feature that saves data in UserDefaults, and later updated the dashboard to display random images from an API.
 
 <br>
 
