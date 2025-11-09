@@ -1,6 +1,6 @@
 I created this iOS project using the VIPER architecture and built it in different phases. It started with a simple login and dashboard, then I added a user registration feature that saves data in UserDefaults, and later updated the dashboard to display random images from an API.
 
-<br><br>
+<br>
 
 ### Phase 1
 
@@ -21,26 +21,23 @@ if email == "test@gmail.com" && password == "123456" { <br>
 ### Phase 2 – User Registration
 
 - In this phase, I added a Registration screen so new users can sign up and save their login details
-
 - A Register button is added on the login page
-
 - When you tap it, it opens a new screen with two text fields:
 - Enter Email
 - Enter Password
   
-- After pressing the Register button, the app saves the user’s email and password in UserDefaults using the key "registeredUsers"
-  
+- After pressing the Register button, the app saves the user’s email and password in UserDefaults using the key "registeredUsers" 
 - If the email is already registered, it shows a message that the user already exists
 
 <br><br>
 
 VIPER Flow (Registration)
 
-- RegisterView – Shows two TextField and Register button
-- RegisterPresenter – Connects the View and Interactor. Sends user input to the Interactor and handles results
-- RegisterInteractor – Handles the main logic, like checking if the user already exists and saving data to UserDefaults
-- RegisterRouter – Manages navigation, After a successful registration, it goes back to the Login screen
-- RegisterBuilder – Connects all VIPER parts together and build a view for Register Page
+- RegisterView – It shows two TextField and Register button
+- RegisterPresenter – It connects the View and Interactor. Sends user input to the Interactor and handles results
+- RegisterInteractor – It handles the main logic like checking if the user already exists and saving data to UserDefaults
+- RegisterRouter – It manages navigation, After a successful registration, it goes back to the Login screen
+- RegisterBuilder – It connects all VIPER parts together and build a view for Register Page
 
 <br><br><br><br>
 
@@ -61,8 +58,8 @@ Working
 <br><br>
 VIPER Flow (Dashboard)
 
-- DashboardView – Shows the images
-- DashboardPresenter – gets images from the Interactor
+- DashboardView – It shows the random images
+- DashboardPresenter – It gets images from the Interactor
 - DashboardInteractor – Connects with the NetworkHandler to fetch data
 - DashboardBuilder – Connects all parts together to build the Dashboard module
 - NetworkHandler – Calls the API and decodes the image data
