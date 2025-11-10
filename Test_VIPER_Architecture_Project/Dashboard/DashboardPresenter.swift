@@ -29,15 +29,41 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
         }
     }
     
-    @MainActor
+
+    
+// --------------------------------------------------------------------------
+/*
         private func fetchImages() async {
-            isLoading = true
+            DispatchQueue.main.async {
+                self.isLoading = true
+            }
             do {
                 let result = try await interactor.fetchImages()
-                images = result
+                DispatchQueue.main.async {
+                    self.images = result
+                    self.isLoading = false
+                }
             } catch {
                 print("Error fetching images: \(error)")
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
             }
-            isLoading = false
         }
+ */
+// ----------Just Add @MainActor and replace this code with following--------
+// --------------------------------------------------------------------------
+    
+    @MainActor
+    private func fetchImages() async {
+        isLoading = true
+        do {
+            let result = try await interactor.fetchImages()
+            images = result
+        } catch {
+            print("Error fetching images: \(error)")
+        }
+        isLoading = false
+    }
+
 }

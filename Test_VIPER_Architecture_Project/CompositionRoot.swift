@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 class CompositionRoot {
-    func createInitialModule(in navigationController: UINavigationController) {
+    func createInitialModule(navigationController: UINavigationController) {
         let networkHandler = NetworkHandler()
         let interactor = LoginInteractor(networkHandler: networkHandler)
         let router = LoginRouter(navigationController: navigationController)

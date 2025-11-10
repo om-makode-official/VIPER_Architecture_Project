@@ -28,6 +28,7 @@ class NetworkHandler: NetworkHandlerProtocol {
         }
         
         let images = try JSONDecoder().decode([RandomImage].self, from: data)
+        
         return images
     }
 }

@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let navigationController = UINavigationController()
                 
-        compositionRoot.createInitialModule(in: navigationController)
+        compositionRoot.createInitialModule(navigationController: navigationController)
                 
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

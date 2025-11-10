@@ -16,7 +16,6 @@
 		AC28F28B2EBDDAEE003B66B8 /* Test_VIPER_Architecture_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F28A2EBDDAEE003B66B8 /* Test_VIPER_Architecture_ProjectUITests.swift */; };
 		AC28F28D2EBDDAEF003B66B8 /* Test_VIPER_Architecture_ProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F28C2EBDDAEF003B66B8 /* Test_VIPER_Architecture_ProjectUITestsLaunchTests.swift */; };
 		AC28F29C2EBDDBB8003B66B8 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F29B2EBDDBB8003B66B8 /* NetworkHandler.swift */; };
-		AC28F29E2EBDDBE6003B66B8 /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F29D2EBDDBE6003B66B8 /* DashboardRouter.swift */; };
 		AC28F2A02EBDDC06003B66B8 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F29F2EBDDC06003B66B8 /* DashboardPresenter.swift */; };
 		AC28F2A22EBDDC31003B66B8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */; };
 		AC28F2A42EBDDC74003B66B8 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2A32EBDDC74003B66B8 /* LoginRouter.swift */; };
@@ -66,7 +65,6 @@
 		AC28F28A2EBDDAEE003B66B8 /* Test_VIPER_Architecture_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_VIPER_Architecture_ProjectUITests.swift; sourceTree = "<group>"; };
 		AC28F28C2EBDDAEF003B66B8 /* Test_VIPER_Architecture_ProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_VIPER_Architecture_ProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AC28F29B2EBDDBB8003B66B8 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
-		AC28F29D2EBDDBE6003B66B8 /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
 		AC28F29F2EBDDC06003B66B8 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
 		AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		AC28F2A32EBDDC74003B66B8 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				AC28F29F2EBDDC06003B66B8 /* DashboardPresenter.swift */,
-				AC28F29D2EBDDBE6003B66B8 /* DashboardRouter.swift */,
 				ACB8ECC52EBE2E72009BBAEE /* DashboardInteractor.swift */,
 				AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */,
 				AC28F2AB2EBDDE25003B66B8 /* DashboardBuilder.swift */,
@@ -337,7 +334,6 @@
 				AC28F2B22EBE014D003B66B8 /* RegisterBuilder.swift in Sources */,
 				AC28F2A62EBDDCA5003B66B8 /* LoginInterator.swift in Sources */,
 				AC28F2B92EBE0BBF003B66B8 /* RegisterPresenter.swift in Sources */,
-				AC28F29E2EBDDBE6003B66B8 /* DashboardRouter.swift in Sources */,
 				AC28F2B72EBE0B58003B66B8 /* RegisterRouter.swift in Sources */,
 				AC28F2A82EBDDCD2003B66B8 /* LoginPresenter.swift in Sources */,
 				AC28F2B52EBE0ABC003B66B8 /* RegisterInteractor.swift in Sources */,

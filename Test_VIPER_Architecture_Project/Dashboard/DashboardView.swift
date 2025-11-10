@@ -36,6 +36,7 @@ struct DashboardView: View {
                                         }
                                         else if phase.error != nil {
                                             Text("Error loading image")
+                                                .foregroundColor(.red)
                                             
                                         }
                                         else {
