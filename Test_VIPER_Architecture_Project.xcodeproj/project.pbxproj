@@ -31,6 +31,7 @@
 		AC28F2BB2EBE0BE9003B66B8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */; };
 		AC28F2BD2EBE0C2D003B66B8 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */; };
 		AC28F2BF2EBE16E7003B66B8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BE2EBE16E7003B66B8 /* Entity.swift */; };
+		ACD0C22F2EC1BDC200EAD6E8 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C22E2EC1BDC200EAD6E8 /* DashboardInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		AC28F2BE2EBE16E7003B66B8 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		ACD0C22E2EC1BDC200EAD6E8 /* DashboardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardInteractor.swift; path = ../../../DashboardInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				AC28F29F2EBDDC06003B66B8 /* DashboardPresenter.swift */,
+				ACD0C22E2EC1BDC200EAD6E8 /* DashboardInteractor.swift */,
 				AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */,
 				AC28F2AB2EBDDE25003B66B8 /* DashboardBuilder.swift */,
 			);
@@ -341,6 +344,7 @@
 				AC28F2B02EBDE7A9003B66B8 /* CompositionRoot.swift in Sources */,
 				AC28F26A2EBDDAE5003B66B8 /* AppDelegate.swift in Sources */,
 				AC28F2A42EBDDC74003B66B8 /* LoginRouter.swift in Sources */,
+				ACD0C22F2EC1BDC200EAD6E8 /* DashboardInteractor.swift in Sources */,
 				AC28F2BF2EBE16E7003B66B8 /* Entity.swift in Sources */,
 				AC28F2A02EBDDC06003B66B8 /* DashboardPresenter.swift in Sources */,
 				AC28F29C2EBDDBB8003B66B8 /* NetworkHandler.swift in Sources */,
