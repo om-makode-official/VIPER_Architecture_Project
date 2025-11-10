@@ -1,8 +1,10 @@
+# VIPER Architecture Project
+---
+
 I created this project using the VIPER architecture and built it in different phases. It started with a simple login and dashboard, then I added a user registration feature that saves data in UserDefaults, and later updated the dashboard to display random images from an API.
 
-<br>
-
-### Phase 1
+---
+### Phase 1 - Login and Dashboard
 
 - Created a Login screen that takes an email and password
 - Used hardcoded credentials in the code: <br>
@@ -16,7 +18,7 @@ if email == "test@gmail.com" && password == "123456" { <br>
 - The Dashboard shows a simple message: “Welcome to Dashboard”
 
 
-<br><br><br><br>
+<br><br>
 
 ### Phase 2 – User Registration
 
@@ -24,8 +26,7 @@ if email == "test@gmail.com" && password == "123456" { <br>
 - A Register button is added on the login page
 - When you tap it, it opens a new screen with two text fields:
 - Enter Email
-- Enter Password
-  
+- Enter Password 
 - After pressing the Register button, the app saves the user’s email and password in UserDefaults using the key "registeredUsers" 
 - If the email is already registered, it shows a message that the user already exists
 
@@ -39,7 +40,7 @@ VIPER Flow (Registration)
 - RegisterRouter – It manages navigation, After a successful registration, it goes back to the Login screen
 - RegisterBuilder – It connects all VIPER parts together and build a view for Register Page
 
-<br><br><br><br>
+<br><br>
 
 ### Phase 3 – Dashboard Showing Random Images
 
@@ -55,7 +56,7 @@ Working
 2. The Interactor calls the NetworkHandler which fetches the data from the API
 3. Once data is received, the Presenter updates the images and the view shows images on screen
 
-<br><br>
+<br>
 VIPER Flow (Dashboard)
 
 - DashboardView – It shows the random images
