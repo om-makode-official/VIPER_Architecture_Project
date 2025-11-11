@@ -31,7 +31,7 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
   - The app checks if the email already exists in **UserDefaults** (under the key "registeredUsers").  
   - If it doesn’t exist:
     - A new user is created as an "Entity" struct ("email", "password").  
-    - The user list is updated and stored back into `UserDefaults`.  
+    - The user list is updated and stored back into "UserDefaults".  
     - A success message is shown, and the user is navigated back to the **Login screen**.  
   - If it already exists, it shows a message **“User Already Exists”** and registration fails.  
 
@@ -51,28 +51,32 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
 ## Screenshots & UI Flow
 
 ### Login Screen
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.36.png" height="550" width="300"/>
-
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.36.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 16.40.45.png" width="300"/></kbd>
 
 ---
 
 ### Registration Screen
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.41.png" width="300"/>
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.58.png" width="300"/>
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.16.png" width="300"/>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.41.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.58.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.16.png" width="300"/></kbd>
 
 ---
 
 ### Registration Success
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.56.png" width="300"/>
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.18.png" width="300"/>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.56.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.18.png" width="300"/></kbd>
 
 
 ---
 
+### UserDefaults (.plist File)
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Screen Shot 2025-11-11 at 2.38.44 PM.png" width="600" height="400"/></kbd>
+
+---
 
 ### Dashboard with Random Images
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.25.png" width="300"/>
-<img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.45.png" width="300"/>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.25.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.45.png" width="300"/></kbd>
 
 
