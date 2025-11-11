@@ -12,6 +12,7 @@ struct LoginView: View {
     
     @State private var email = ""
     @State private var password = ""
+    @State private var showPassword = false
     
     @StateObject private var presenter: LoginPresenter
     
@@ -28,9 +29,31 @@ struct LoginView: View {
             
             TextField("Email", text: $email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
             
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            HStack{
+                if showPassword{
+                    TextField("Password", text: $password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }
+                else{
+                    SecureField("Password", text: $password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }
+                Button(action: {
+                    showPassword.toggle()
+                    
+                }){
+                    Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                }
+                       
+            }
+            
             
             
             Button("Login") {
@@ -41,12 +64,16 @@ struct LoginView: View {
             Button("Register"){
                 presenter.registerButtonTapped()
             }
-            
-            if let error = presenter.errorMessage {
-                
-                Text(error).foregroundColor(.red)
-            }
+        
         }
         .padding()
+        .alert(isPresented: $presenter.showErrorAlert) { 
+                Alert(
+                    title: Text("Login Failed"),
+                    message: Text(presenter.errorMessage ?? "Invalid credentials"),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+
     }
 }

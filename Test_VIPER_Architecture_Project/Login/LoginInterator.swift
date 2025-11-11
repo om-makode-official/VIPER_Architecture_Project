@@ -21,21 +21,25 @@ class LoginInteractor: LoginPresenterToInteractorProtocol {
         
     }
     
-    func loginUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
+    func loginUser(email: String, password: String) {
         
         let defaults = UserDefaults.standard
                 
         guard let data = defaults.data(forKey: "registeredUsers"),
                 let users = try? JSONDecoder().decode([Entity].self, from: data) else {
-            completion(false)
+            presenter?.loginFailed(message: "No registered users available in the database")
             return
             }
                 
         
             if users.contains(where: { $0.email == email && $0.password == password }) {
-                completion(true)
+                
+                defaults.set(true, forKey: "isLoggedIn")
+                defaults.set(email, forKey: "loggedInUserEmail")
+                
+                presenter?.loginSuccess()
             } else {
-                completion(false)
+                presenter?.loginFailed(message: "Invalid Email and Password")
             }
     }
         

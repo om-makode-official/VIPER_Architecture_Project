@@ -7,30 +7,13 @@
 
 import Foundation
 
-protocol LoginViewToPresenterProtocol: AnyObject {
-    func loginButtonTapped(email: String, password: String)
-}
-
-protocol LoginPresenterToInteractorProtocol {
-    func loginUser(email: String, password: String, completion: @escaping (Bool) -> Void)
-}
-
-protocol LoginPresenterToRouterProtocol: AnyObject {
-    func navigateToDashboard()
-    func navigateToRegister()
-}
-
-protocol LoginInteractorToPresenterProtocol: AnyObject {
-    func loginSuccess()
-    func loginFailed(message: String)
-}
-
 class LoginPresenter: ObservableObject, LoginViewToPresenterProtocol {
     
     private let interactor: LoginPresenterToInteractorProtocol
     private let router: LoginPresenterToRouterProtocol
     
     @Published var errorMessage: String?
+    @Published var showErrorAlert = false
     
     init(interactor: LoginPresenterToInteractorProtocol,
          router: LoginPresenterToRouterProtocol) {
@@ -43,15 +26,10 @@ class LoginPresenter: ObservableObject, LoginViewToPresenterProtocol {
         
         errorMessage = nil
 
-        interactor.loginUser(email: email, password: password){ success in
-            if success{
-                self.router.navigateToDashboard()
-            }
-            else{
-                print("Invalid Credentialss")
-            }
-        }
+        interactor.loginUser(email: email, password: password)
+        
     }
+    
     func registerButtonTapped() {
             router.navigateToRegister()
         }
@@ -61,8 +39,6 @@ extension LoginPresenter: LoginInteractorToPresenterProtocol {
     
     func loginSuccess() {
         DispatchQueue.main.async {
-            
-
             self.router.navigateToDashboard()
         }
     }
@@ -70,9 +46,8 @@ extension LoginPresenter: LoginInteractorToPresenterProtocol {
     func loginFailed(message: String) {
         
         DispatchQueue.main.async {
-            
-
             self.errorMessage = message
+            self.showErrorAlert = true
         }
     }
 }

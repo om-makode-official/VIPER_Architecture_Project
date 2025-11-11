@@ -30,8 +30,13 @@
 		AC28F2B92EBE0BBF003B66B8 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2B82EBE0BBF003B66B8 /* RegisterPresenter.swift */; };
 		AC28F2BB2EBE0BE9003B66B8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */; };
 		AC28F2BD2EBE0C2D003B66B8 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */; };
-		AC28F2BF2EBE16E7003B66B8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BE2EBE16E7003B66B8 /* Entity.swift */; };
 		ACD0C2332EC1C04500EAD6E8 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */; };
+		ACD0C2362EC224A200EAD6E8 /* RegisterContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C2352EC224A200EAD6E8 /* RegisterContracts.swift */; };
+		ACD0C2382EC2250800EAD6E8 /* DashboardContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C2372EC2250800EAD6E8 /* DashboardContracts.swift */; };
+		ACD0C23A2EC2253E00EAD6E8 /* LoginContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C2392EC2253E00EAD6E8 /* LoginContracts.swift */; };
+		ACD0C23C2EC2261F00EAD6E8 /* RegisterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C23B2EC2261F00EAD6E8 /* RegisterEntity.swift */; };
+		ACD0C23E2EC2268C00EAD6E8 /* DashboardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C23D2EC2268C00EAD6E8 /* DashboardEntity.swift */; };
+		ACD0C2402EC319FD00EAD6E8 /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C23F2EC319FD00EAD6E8 /* DashboardRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +84,13 @@
 		AC28F2B82EBE0BBF003B66B8 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
-		AC28F2BE2EBE16E7003B66B8 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
+		ACD0C2352EC224A200EAD6E8 /* RegisterContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterContracts.swift; sourceTree = "<group>"; };
+		ACD0C2372EC2250800EAD6E8 /* DashboardContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContracts.swift; sourceTree = "<group>"; };
+		ACD0C2392EC2253E00EAD6E8 /* LoginContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContracts.swift; sourceTree = "<group>"; };
+		ACD0C23B2EC2261F00EAD6E8 /* RegisterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEntity.swift; sourceTree = "<group>"; };
+		ACD0C23D2EC2268C00EAD6E8 /* DashboardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEntity.swift; sourceTree = "<group>"; };
+		ACD0C23F2EC319FD00EAD6E8 /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +144,12 @@
 				AC28F2692EBDDAE5003B66B8 /* AppDelegate.swift */,
 				AC28F26B2EBDDAE5003B66B8 /* SceneDelegate.swift */,
 				AC28F26D2EBDDAE5003B66B8 /* ViewController.swift */,
-				AC28F2722EBDDAEE003B66B8 /* Assets.xcassets */,
 				AC28F29B2EBDDBB8003B66B8 /* NetworkHandler.swift */,
 				AC28F2AF2EBDE7A9003B66B8 /* CompositionRoot.swift */,
-				AC28F2AE2EBDDE81003B66B8 /* Dashboard */,
-				AC28F2B32EBE0153003B66B8 /* Register */,
+				AC28F2722EBDDAEE003B66B8 /* Assets.xcassets */,
 				AC28F2AD2EBDDE42003B66B8 /* Login */,
+				AC28F2B32EBE0153003B66B8 /* Register */,
+				AC28F2AE2EBDDE81003B66B8 /* Dashboard */,
 				AC28F2742EBDDAEE003B66B8 /* LaunchScreen.storyboard */,
 				AC28F2772EBDDAEE003B66B8 /* Info.plist */,
 			);
@@ -169,6 +179,7 @@
 				AC28F2A72EBDDCD2003B66B8 /* LoginPresenter.swift */,
 				AC28F2A92EBDDCEB003B66B8 /* LoginView.swift */,
 				AC28F2A32EBDDC74003B66B8 /* LoginRouter.swift */,
+				ACD0C2392EC2253E00EAD6E8 /* LoginContracts.swift */,
 				AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */,
 				AC28F2A52EBDDCA5003B66B8 /* LoginInterator.swift */,
 			);
@@ -180,6 +191,9 @@
 			children = (
 				AC28F29F2EBDDC06003B66B8 /* DashboardPresenter.swift */,
 				ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */,
+				ACD0C2372EC2250800EAD6E8 /* DashboardContracts.swift */,
+				ACD0C23D2EC2268C00EAD6E8 /* DashboardEntity.swift */,
+				ACD0C23F2EC319FD00EAD6E8 /* DashboardRouter.swift */,
 				AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */,
 				AC28F2AB2EBDDE25003B66B8 /* DashboardBuilder.swift */,
 			);
@@ -191,9 +205,10 @@
 			children = (
 				AC28F2B12EBE014D003B66B8 /* RegisterBuilder.swift */,
 				AC28F2B42EBE0ABC003B66B8 /* RegisterInteractor.swift */,
+				ACD0C2352EC224A200EAD6E8 /* RegisterContracts.swift */,
+				ACD0C23B2EC2261F00EAD6E8 /* RegisterEntity.swift */,
 				AC28F2B82EBE0BBF003B66B8 /* RegisterPresenter.swift */,
 				AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */,
-				AC28F2BE2EBE16E7003B66B8 /* Entity.swift */,
 				AC28F2B62EBE0B58003B66B8 /* RegisterRouter.swift */,
 			);
 			path = Register;
@@ -330,13 +345,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC28F26E2EBDDAE5003B66B8 /* ViewController.swift in Sources */,
+				ACD0C23C2EC2261F00EAD6E8 /* RegisterEntity.swift in Sources */,
 				AC28F2A22EBDDC31003B66B8 /* DashboardView.swift in Sources */,
+				ACD0C2382EC2250800EAD6E8 /* DashboardContracts.swift in Sources */,
 				AC28F2B22EBE014D003B66B8 /* RegisterBuilder.swift in Sources */,
 				AC28F2A62EBDDCA5003B66B8 /* LoginInterator.swift in Sources */,
 				AC28F2B92EBE0BBF003B66B8 /* RegisterPresenter.swift in Sources */,
 				AC28F2B72EBE0B58003B66B8 /* RegisterRouter.swift in Sources */,
 				AC28F2A82EBDDCD2003B66B8 /* LoginPresenter.swift in Sources */,
 				AC28F2B52EBE0ABC003B66B8 /* RegisterInteractor.swift in Sources */,
+				ACD0C23A2EC2253E00EAD6E8 /* LoginContracts.swift in Sources */,
 				AC28F2BB2EBE0BE9003B66B8 /* RegisterView.swift in Sources */,
 				AC28F2AC2EBDDE25003B66B8 /* DashboardBuilder.swift in Sources */,
 				AC28F2AA2EBDDCEB003B66B8 /* LoginView.swift in Sources */,
@@ -344,9 +362,11 @@
 				AC28F2B02EBDE7A9003B66B8 /* CompositionRoot.swift in Sources */,
 				AC28F26A2EBDDAE5003B66B8 /* AppDelegate.swift in Sources */,
 				AC28F2A42EBDDC74003B66B8 /* LoginRouter.swift in Sources */,
-				AC28F2BF2EBE16E7003B66B8 /* Entity.swift in Sources */,
+				ACD0C23E2EC2268C00EAD6E8 /* DashboardEntity.swift in Sources */,
 				ACD0C2332EC1C04500EAD6E8 /* DashboardInteractor.swift in Sources */,
+				ACD0C2362EC224A200EAD6E8 /* RegisterContracts.swift in Sources */,
 				AC28F2A02EBDDC06003B66B8 /* DashboardPresenter.swift in Sources */,
+				ACD0C2402EC319FD00EAD6E8 /* DashboardRouter.swift in Sources */,
 				AC28F29C2EBDDBB8003B66B8 /* NetworkHandler.swift in Sources */,
 				AC28F26C2EBDDAE5003B66B8 /* SceneDelegate.swift in Sources */,
 			);

@@ -6,21 +6,21 @@
 //
 
 import Foundation
-
-protocol DashboardViewToPresenterProtocol: AnyObject {
-    func viewDidLoad()
-}
+import UIKit
 
 
 class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
     
     @Published var images: [RandomImage] = []
+    @Published var imageCache: [String: UIImage] = [:]
     @Published var isLoading = false
     
     private let interactor: DashboardInteractorProtocol
+    private let router: DashboardRouterProtocol
     
-    init(interactor: DashboardInteractorProtocol) {
+    init(interactor: DashboardInteractorProtocol, router: DashboardRouterProtocol) {
         self.interactor = interactor
+        self.router = router
     }
     
     func viewDidLoad() {
@@ -65,5 +65,28 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
         }
         isLoading = false
     }
+    
+    func loadImage(for url: String) async -> UIImage? {
+        if let existing = imageCache[url] {
+            return existing
+        }
+        
+        if let fetched = await interactor.fetchImage(for: url) {
+            await MainActor.run {
+                self.imageCache[url] = fetched
+            }
+            return fetched
+        }
+        return nil
+    }
+    
+    func logout(){
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "isLoggedIn")
+        defaults.removeObject(forKey: "loggedInUserEmail")
+        
+        router.navigateToLogin()
+    }
+
 
 }

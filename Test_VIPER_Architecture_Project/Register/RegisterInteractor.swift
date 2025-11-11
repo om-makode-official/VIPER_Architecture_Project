@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol RegisterInteractorProtocol {
-    func registerUser(email: String, password: String, completion: @escaping (Bool) -> Void)
-}
 
 class RegisterInteractor: RegisterInteractorProtocol {
     

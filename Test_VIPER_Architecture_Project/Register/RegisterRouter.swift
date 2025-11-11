@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-protocol RegisterRouterProtocol {
-    func navigateBackToLogin()
-}
 
 class RegisterRouter: RegisterRouterProtocol {
     weak var navigationController: UINavigationController?

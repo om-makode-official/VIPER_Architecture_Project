@@ -10,12 +10,14 @@ import SwiftUI
 import UIKit
 
 class LoginBuilder {
-    func createModule(navigationController: UINavigationController?) -> UIViewController {
+    func createModule(navigationController: UINavigationController) -> UIViewController {
         
         let interactor = LoginInteractor(networkHandler: NetworkHandler())
         let router = LoginRouter(navigationController: navigationController)
         let presenter = LoginPresenter(interactor: interactor, router: router)
         let view = LoginView(presenter: presenter)
+        
+        interactor.presenter = presenter
         
         return UIHostingController(rootView: view)
     }

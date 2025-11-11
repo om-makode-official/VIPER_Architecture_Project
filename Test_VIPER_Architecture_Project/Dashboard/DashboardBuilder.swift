@@ -11,12 +11,13 @@ import SwiftUI
 
 class DashboardBuilder {
     
-    func createModule() -> UIViewController {
+    func createModule(navigationController: UINavigationController) -> UIViewController {
         
         
         let networkHandler = NetworkHandler()
         let interactor = DashboardInteractor(networkHandler: networkHandler)
-        let presenter = DashboardPresenter(interactor: interactor)
+        let router = DashboardRouter(navigationController: navigationController)
+        let presenter = DashboardPresenter(interactor: interactor, router: router)
         let view = DashboardView(presenter: presenter)
         return UIHostingController(rootView: view)
     }

@@ -11,16 +11,20 @@ import SwiftUI
 
 class CompositionRoot {
     func createInitialModule(navigationController: UINavigationController) {
-        let networkHandler = NetworkHandler()
-        let interactor = LoginInteractor(networkHandler: networkHandler)
-        let router = LoginRouter(navigationController: navigationController)
-        let presenter = LoginPresenter(interactor: interactor, router: router)
-        let view = LoginView(presenter: presenter)
         
-        interactor.presenter = presenter
+        let defaults = UserDefaults.standard
+        let isLoggedIn = defaults.bool(forKey: "isLoggedIn")
         
-        let vc = UIHostingController(rootView: view)
-        navigationController.viewControllers = [vc]
+        if isLoggedIn{
+            let dashboardVC = DashboardBuilder().createModule(navigationController: navigationController)
+            navigationController.viewControllers = [dashboardVC]
+        }
+        else{
+            let loginVC = LoginBuilder().createModule(navigationController: navigationController)
+            navigationController.viewControllers = [loginVC]
+            
+        }
+
     }
 }
 
