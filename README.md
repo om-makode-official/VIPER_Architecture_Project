@@ -1,82 +1,82 @@
 # VIPER Architecture iOS Project
 
 This project demonstrates the **VIPER Architecture** that combines **SwiftUI** and **UIKit**.  
-It was developed step-by-step, starting from a simple login flow and progressively adding features like registration and API integration.  
-
----
 
 ## Project Explanation
 
 The project simulates a simple authentication and dashboard system using VIPER architecture:
 
-- The **Login screen** validates users with predefined credentials.
+- The **Login screen** validates users with credentials.
 - The **Register screen** allows new users to register and saves their data locally using "UserDefaults".
-- The **Dashboard** displays random images fetched from a public API using async/await networking.
+- The **Dashboard** displays random images fetched from a public API.
 
-Each layer has its own responsibility — ensuring that logic, data, and UI are completely separated.
+Each layer(VIPER) of Project has its own responsibility — ensuring that logic, data, and UI are completely separated.
 
----
 
 ## Working of the Project
 
 ### Flow Overview
 
-1. **Launch App → Login Screen**
-   - The user enters email and password.
-   - If credentials match, they’re redirected to the Dashboard.
-   - If not registered, they can tap **Register** to sign up.
+1. **Login Screen**
+- The screen takes **Email** and **Password** as input.  
+- On pressing **Login**, it checks if the entered credentials match any user stored in **UserDefaults**.
+  - If credentials are correct → navigates to the **Dashboard Screen**.  
+  - If not → shows an alert saying **“Invalid credentials”**.
+- Navigation is handled using **UIHostingController** because SwiftUI pages are used inside UIKit.
+
 
 2. **Register Screen**
-   - User enters a new email and password.
-   - Data is saved to "UserDefaults".
-   - If already registered, a message is shown.
-   - After successful registration, user returns to Login.
+- The user enters their **Email** and **Password** in text fields.  
+- On pressing the **Register** button:
+  - The app checks if the email already exists in **UserDefaults** (under the key "registeredUsers").  
+  - If it doesn’t exist:
+    - A new user is created as an "Entity" struct ("email", "password").  
+    - The user list is updated and stored back into "UserDefaults".  
+    - A success message is shown, and the user is navigated back to the **Login screen**.  
+  - If it already exists, it shows a message **“User Already Exists”** and registration fails.  
+
 
 3. **Dashboard**
-   - Displays “Welcome to Dashboard” (in Phase 1).
-   - Later updated to fetch and display **random images** from an API.
-   - Uses **async/await** and a **NetworkHandler** to manage data fetching.
+- After logging in successfully, the app navigates to the **Dashboard** using "UIHostingController", since SwiftUI screens are embedded inside UIKit.
+- Once opened, the **DashboardPresenter** triggers a data fetch request.
+- The **DashboardInteractor** calls the **NetworkHandler**, which fetches data from:
+  - **API:** https://picsum.photos/v2/list?page=4&limit=15
+- The fetched data is decoded into a model that includes:
+  - Image URL  
+  - Author Name
+- The **Presenter** updates a "@Published" property, and the **View** automatically refreshes to show images with author names.
 
----
+
 
 ## Screenshots & UI Flow
 
 ### Login Screen
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-10 at 12.53.02.png" width="300"/>
-
-The app starts at the Login screen.  
-Users enter their **email** and **password** — if valid, they’re redirected to the Dashboard using "UIHostingController" (SwiftUI inside UIKit).
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.36.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 16.40.45.png" width="300"/></kbd>
 
 ---
 
 ### Registration Screen
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-10 at 12.54.55.png" width="300"/>
-
-Users who don’t have an account can tap **Register**, enter their credentials, and save them to "UserDefaults".  
-If the email already exists, a validation message appears.
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.41.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.58.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.16.png" width="300"/></kbd>
 
 ---
 
 ### Registration Success
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-10 at 12.55.29.png" width="300"/>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.56.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.18.png" width="300"/></kbd>
 
-After registering successfully, the app navigates back to the **Login screen**, where the user can now log in.
 
 ---
 
-### Invalid Credentials Message
-<img src="Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202025-11-10%20at%2012.55.47.png" width="300"/>
-
-If incorrect credentials are entered, the app displays an “Invalid credentials” alert message.
+### UserDefaults (.plist File)
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Screen Shot 2025-11-11 at 2.38.44 PM.png" width="600" height="400"/></kbd>
 
 ---
 
 ### Dashboard with Random Images
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-10 at 12.55.47.png" width="300"/>
-
-Once logged in, the Dashboard displays a list of **random images** fetched from  
-https://picsum.photos/v2/list?page=4&limit=15.  
-Each image shows the **author’s name** below it.  
-The data flow here is handled entirely through VIPER modules and the **NetworkHandler**.
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.25.png" width="300"/></kbd>
+<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.45.png" width="300"/></kbd>
 
 
