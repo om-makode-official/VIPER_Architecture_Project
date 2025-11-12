@@ -11,6 +11,7 @@ import SwiftUI
 struct DashboardView: View {
     
     @StateObject private var presenter: DashboardPresenter
+    @State private var hasLoadedOnce = false
     
     init(presenter: DashboardPresenter) {
         _presenter = StateObject(wrappedValue: presenter)
@@ -18,10 +19,11 @@ struct DashboardView: View {
     
     var body: some View {
         VStack {
-                if presenter.isLoading {
-                    ProgressView("Loadinggggg...")
-                        .padding()
-                } else {
+//                if presenter.isLoading {
+//                    ProgressView("Loadinggggg...")
+//                        .padding()
+//                } else {
+            
                     ScrollView {
                         LazyVStack {
                             ForEach(presenter.images) { image in
@@ -49,24 +51,44 @@ struct DashboardView: View {
                                      
 */
                                     
-                                    if let cachedImg = presenter.imageCache[image.download_url] {
-                                        Image(uiImage: cachedImg)
+//                                    if let cachedImg = presenter.imageCache[image.download_url] {
+//                                        Image(uiImage: cachedImg)
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .cornerRadius(12)
+//                                            .padding()
+//                                            .frame(height: 300)
+//
+//                                    } else {
+//                                        ProgressView()
+//                                            .task {
+//                                                if let newImage = await presenter.loadImage(for: image.download_url) {
+//                                                    presenter.imageCache[image.download_url] = newImage
+//                                                }
+//                                            }
+//                                    }
+                                    
+                                    ZStack{
+                                        Image(uiImage: presenter.imageCache[image.download_url] ?? UIImage(named: "placeholder_image")!)
                                             .resizable()
                                             .scaledToFit()
                                             .cornerRadius(12)
                                             .padding()
                                             .frame(height: 300)
-                                            
-                                    } else {
-                                        ProgressView()
-                                            .task {
-                                                if let newImage = await presenter.loadImage(for: image.download_url) {
-                                                    presenter.imageCache[image.download_url] = newImage
+                                            .overlay(
+                                                Group{
+                                                    if presenter.loadingImages.contains(image.download_url){
+                                                        ProgressView()
+                                                    }
+                                                }
+                                            )
+                                            .task{
+                                                if presenter.imageCache[image.download_url] == nil || presenter.imageCache[image.download_url] == UIImage(named: "placeholder_image"){
+                                                    _ = await presenter.loadImage(for: image.download_url)
+                                                    
                                                 }
                                             }
                                     }
-                                    
-
                                     Text(image.author)
                                         .font(.subheadline)
                                         
@@ -74,10 +96,17 @@ struct DashboardView: View {
                             }
                         }
                     }
-                }
+  //              }
             }
-            .onAppear {
-                presenter.viewDidLoad()
+//            .onAppear {
+//                presenter.viewDidLoad()
+//            }
+        
+            .task {
+                if !hasLoadedOnce {
+                    await presenter.viewDidLoadAsync()
+                    hasLoadedOnce = true
+                }
             }
             .navigationTitle("Random Images")
             .navigationBarBackButtonHidden()

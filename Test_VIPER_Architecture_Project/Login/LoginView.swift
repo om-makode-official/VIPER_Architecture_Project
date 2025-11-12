@@ -26,32 +26,50 @@ struct LoginView: View {
             
             Text("Login")
                 .font(.largeTitle)
+                .bold()
             
             TextField("Email", text: $email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
             
-            HStack{
+            ZStack{
                 if showPassword{
                     TextField("Password", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .overlay(
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                
+                            }
+                                .padding(.trailing, 30),
+                            alignment: .trailing
+                        )
                 }
                 else{
                     SecureField("Password", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
-                }
-                Button(action: {
-                    showPassword.toggle()
+                        .overlay(
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                
+                            }
+                                .padding(.trailing, 30),
+                            alignment: .trailing
+                        )
                     
-                }){
-                    Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
                 }
-                       
             }
             
             
@@ -67,11 +85,18 @@ struct LoginView: View {
         
         }
         .padding()
-        .alert(isPresented: $presenter.showErrorAlert) { 
+        .alert(item: $presenter.alertMessage) { msg in
                 Alert(
-                    title: Text("Login Failed"),
-                    message: Text(presenter.errorMessage ?? "Invalid credentials"),
-                    dismissButton: .default(Text("OK"))
+                    title: Text(msg.title),
+                    message: Text(msg.message),
+                    dismissButton: .default(Text("OK")){
+                        if case .success = msg{
+                            presenter.alertMessage = nil
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                presenter.handleSuccessNavigation()
+                            }
+                        }
+                    }
                 )
             }
 

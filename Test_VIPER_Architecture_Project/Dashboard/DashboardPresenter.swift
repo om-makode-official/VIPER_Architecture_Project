@@ -14,6 +14,7 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
     @Published var images: [RandomImage] = []
     @Published var imageCache: [String: UIImage] = [:]
     @Published var isLoading = false
+    @Published var loadingImages: Set<String> = []
     
     private let interactor: DashboardInteractorProtocol
     private let router: DashboardRouterProtocol
@@ -23,10 +24,10 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
         self.router = router
     }
     
-    func viewDidLoad() {
-        Task {
+    func viewDidLoadAsync() async {
+//        Task{
             await fetchImages()
-        }
+//        }
     }
     
 
@@ -71,13 +72,25 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
             return existing
         }
         
+        let placeholder = UIImage(named: "placeholder_image")
+        await MainActor.run {
+            self.imageCache[url] = placeholder
+            self.loadingImages.insert(url)
+        }
+        
         if let fetched = await interactor.fetchImage(for: url) {
             await MainActor.run {
                 self.imageCache[url] = fetched
+                self.loadingImages.remove(url)
             }
             return fetched
+        }else{
+            await MainActor.run{
+                self.loadingImages.remove(url)
+            }
+
+            return placeholder
         }
-        return nil
     }
     
     func logout(){

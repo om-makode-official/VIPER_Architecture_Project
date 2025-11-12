@@ -31,7 +31,9 @@ class LoginInteractor: LoginPresenterToInteractorProtocol {
             return
             }
                 
-        
+        if email.isEmpty || password.isEmpty{
+            presenter?.loginFailed(message: "Please fill all fields")
+        }else{
             if users.contains(where: { $0.email == email && $0.password == password }) {
                 
                 defaults.set(true, forKey: "isLoggedIn")
@@ -41,6 +43,7 @@ class LoginInteractor: LoginPresenterToInteractorProtocol {
             } else {
                 presenter?.loginFailed(message: "Invalid Email and Password")
             }
+        }
     }
         
         

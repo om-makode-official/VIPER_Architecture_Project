@@ -11,5 +11,5 @@ import Foundation
 struct RandomImage: Codable, Identifiable {
     let id: String
     let author: String
-    let download_url: String
+    var download_url: String
 }

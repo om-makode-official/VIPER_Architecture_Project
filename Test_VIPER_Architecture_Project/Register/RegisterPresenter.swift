@@ -11,7 +11,7 @@ class RegisterPresenter: ObservableObject {
     private let interactor: RegisterInteractorProtocol
     private let router: RegisterRouterProtocol
     
-    @Published var alertMessage: String? = nil
+    @Published var alertMessage: AlertType? = nil
     
     init(interactor: RegisterInteractorProtocol, router: RegisterRouterProtocol) {
         self.interactor = interactor
@@ -23,16 +23,16 @@ class RegisterPresenter: ObservableObject {
             
             DispatchQueue.main.async {
                 if success {
-                    self.alertMessage = "User Registered Successfully"
+                    self.alertMessage = .success(message: "User Registered Successfully")
                     
                     DispatchQueue.main.asyncAfter(deadline: .now()+1){
-                        //showAlert = false
+                        
                         self.alertMessage = nil
                         self.router.navigateBackToLogin()
                     }
                     
                 } else {
-                    self.alertMessage = "User Already Exists"
+                    self.alertMessage = .error(message: "User Already Exists")
                     
                 }
             }

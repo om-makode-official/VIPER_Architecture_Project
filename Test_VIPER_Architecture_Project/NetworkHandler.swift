@@ -15,20 +15,28 @@ protocol NetworkHandlerProtocol {
 class NetworkHandler: NetworkHandlerProtocol {
     
     func fetchRandomImages() async throws -> [RandomImage] {
-        let urlString = "https://picsum.photos/v2/list?page=4&limit=15"
+        let urlString = "https://picsum.photos/v2/list?page=7&limit=15"
         guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
+//            throw URLError(.badURL)
+            throw ApiError.message(StringConstants.invalidURL)
         }
         
         let (data, response) = try await URLSession.shared.data(from: url)
         
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw URLError(.badServerResponse)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            //throw URLError(.badServerResponse)
+            throw ApiError.message(StringConstants.noResponse)
         }
         
-        let images = try JSONDecoder().decode([RandomImage].self, from: data)
+        guard httpResponse.statusCode == 200 else{
+            throw ApiError.message(StringConstants.somethingWentWrong)
+        }
         
-        return images
+        do{
+            return try JSONDecoder().decode([RandomImage].self, from: data)
+        }catch{
+            throw ApiError.message(StringConstants.checkInternet)
+        }
+
     }
 }

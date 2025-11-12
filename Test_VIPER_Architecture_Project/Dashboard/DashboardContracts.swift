@@ -14,7 +14,7 @@ protocol DashboardInteractorProtocol {
 }
 
 protocol DashboardViewToPresenterProtocol: AnyObject {
-    func viewDidLoad()
+    func viewDidLoadAsync() async
 }
 
 

@@ -24,7 +24,7 @@ struct RegisterView: View {
     }
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 16) {
             Text("Register")
                 .font(.largeTitle)
                 .bold()
@@ -35,13 +35,23 @@ struct RegisterView: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
             
-            HStack{
+            ZStack{
                 if showPassword{
                     TextField("Password", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .overlay(
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                
+                            }
+                                .padding(.trailing, 30),
+                            alignment: .trailing
+                        )
                 }
                 else{
                     SecureField("Password", text: $password)
@@ -49,69 +59,62 @@ struct RegisterView: View {
                         .padding(.horizontal)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .overlay(
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                
+                            }
+                                .padding(.trailing, 30),
+                            alignment: .trailing
+                        )
                 }
-                Button(action: {
-                    showPassword.toggle()
-                    
-                }){
-                    Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
-                }
+                
             }
+                
+                Button("Register") {
+                    if validateCredentials(){
+                        presenter.registerTapped(email: email, password: password)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
             
-            Button("Register") {
-                if validateCredentials(){
-                    presenter.registerTapped(email: email, password: password)
-                }
-            }
-            .buttonStyle(.borderedProminent)
+        }
             .onChange(of: presenter.alertMessage){ msg in
-                if let message = msg{
-                    if message.contains("Successfully"){
-                        alertTitle = "Success"
-                    }
-                    else if message.contains("Exists"){
-                        alertTitle = "Error"
-                    }
-                    else{
-                        alertTitle = "Message"
-                    }
-                    alertMessage = message
-                    showAlert = true
-                    
-                    if message.contains("Successfully"){
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
-                            showAlert = false
-                        }
-                    }
-                    
-                    presenter.alertMessage = nil
+                guard let message = msg else {
+                    return
                 }
+                alertTitle = message.title
+                alertMessage = message.message
+                showAlert = true
+                
+                presenter.alertMessage = nil
+                }
+            .alert(isPresented: $showAlert){
+                Alert(title: Text(alertTitle),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("Ok")))
             }
             
-        }
-        .alert(isPresented: $showAlert){
-            Alert(title: Text(alertTitle),
-            message: Text(alertMessage),
-                  dismissButton: .default(Text("Ok")))
-        }
+        
+        
     }
+    
     
     func validateCredentials() -> Bool{
         if email.isEmpty || password.isEmpty{
-            alertMessage = "Please fill all fields"
-            showAlert = true
+            presenter.alertMessage = .error(message: "Please fill all fields")
             return false
         }
         
         if !email.contains("@") || !email.contains("."){
-            alertMessage = "Please Enter a Valid Email"
-            showAlert = true
+            presenter.alertMessage =  .error(message: "Please Enter a Valid Email")
             return false
         }
         
         if password.count < 6{
-            alertMessage = "Password must have at least 6 characters"
-            showAlert = true
+            presenter.alertMessage = .error(message: "Password must have at least 6 characters")
             return false
         }
         return true

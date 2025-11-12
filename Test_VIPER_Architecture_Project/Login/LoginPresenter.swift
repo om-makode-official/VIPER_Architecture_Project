@@ -12,8 +12,7 @@ class LoginPresenter: ObservableObject, LoginViewToPresenterProtocol {
     private let interactor: LoginPresenterToInteractorProtocol
     private let router: LoginPresenterToRouterProtocol
     
-    @Published var errorMessage: String?
-    @Published var showErrorAlert = false
+    @Published var alertMessage: AlertType? = nil
     
     init(interactor: LoginPresenterToInteractorProtocol,
          router: LoginPresenterToRouterProtocol) {
@@ -24,15 +23,18 @@ class LoginPresenter: ObservableObject, LoginViewToPresenterProtocol {
     
     func loginButtonTapped(email: String, password: String) {
         
-        errorMessage = nil
+        alertMessage = nil
 
         interactor.loginUser(email: email, password: password)
         
     }
     
     func registerButtonTapped() {
-            router.navigateToRegister()
-        }
+        router.navigateToRegister()
+    }
+    func handleSuccessNavigation() {
+        router.navigateToDashboard()
+    }
 }
 
 extension LoginPresenter: LoginInteractorToPresenterProtocol {
@@ -46,9 +48,11 @@ extension LoginPresenter: LoginInteractorToPresenterProtocol {
     func loginFailed(message: String) {
         
         DispatchQueue.main.async {
-            self.errorMessage = message
-            self.showErrorAlert = true
+            self.alertMessage = .error(message: message)
+            
         }
     }
+    
+    
 }
 

@@ -19,7 +19,9 @@ class DashboardInteractor: DashboardInteractorProtocol {
     }
     
     func fetchImages() async throws -> [RandomImage] {
+        
         try await networkHandler.fetchRandomImages()
+
     }
     
     func fetchImage(for urlString: String) async -> UIImage?{
