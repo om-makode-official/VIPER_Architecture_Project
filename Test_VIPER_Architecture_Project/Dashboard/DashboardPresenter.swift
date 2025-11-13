@@ -15,6 +15,8 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
     @Published var imageCache: [String: UIImage] = [:]
     @Published var isLoading = false
     @Published var loadingImages: Set<String> = []
+    @Published var failedImages: Set<String> = []
+    @Published var loadingStates: RandomImageLoadingStates = .idle
     
     private let interactor: DashboardInteractorProtocol
     private let router: DashboardRouterProtocol
@@ -76,6 +78,7 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
         await MainActor.run {
             self.imageCache[url] = placeholder
             self.loadingImages.insert(url)
+            self.failedImages.remove(url)
         }
         
         if let fetched = await interactor.fetchImage(for: url) {
@@ -87,11 +90,19 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
         }else{
             await MainActor.run{
                 self.loadingImages.remove(url)
+                self.failedImages.insert(url)
             }
 
             return placeholder
         }
     }
+
+    func reloadImage(for url: String) async {
+        failedImages.remove(url)
+        imageCache.removeValue(forKey: url)
+        await loadImage(for: url)
+    }
+
     
     func logout(){
         let defaults = UserDefaults.standard
@@ -99,6 +110,30 @@ class DashboardPresenter: ObservableObject, DashboardViewToPresenterProtocol {
         defaults.removeObject(forKey: "loggedInUserEmail")
         
         router.navigateToLogin()
+    }
+    
+    func loadImagesFrommWeb() {
+        self.loadingStates = .loading
+        Task {
+            do {
+                let response = try await self.interactor.getImagesFromWeb()
+                if response.isEmpty == false {
+                    await MainActor.run(body: {
+                        self.loadingStates = .loaded(response)
+                    })
+                } else {
+                    await MainActor.run(body: {
+                        self.loadingStates = .error(StringConstants.noData, false)
+                    })
+                }
+            } catch {
+                let error = error as? ApiError
+                let errorMsg = error?.displayMsg ?? StringConstants.somethingWentWrong
+                await MainActor.run(body: {
+                    self.loadingStates = .error(errorMsg, errorMsg ==  StringConstants.checkInternet)
+                })
+            }
+        }
     }
 
 

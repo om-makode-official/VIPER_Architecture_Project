@@ -8,35 +8,29 @@
 import Foundation
 
 protocol NetworkHandlerProtocol {
-    func fetchRandomImages() async throws -> [RandomImage]
+    func fetchRandomImages<T: Codable>(_url: String,result: T.Type) async throws -> T?
 }
 
-
+let urlString = "https://picsum.photos/v2/list?page=7&limit=30"
 class NetworkHandler: NetworkHandlerProtocol {
     
-    func fetchRandomImages() async throws -> [RandomImage] {
-        let urlString = "https://picsum.photos/v2/list?page=7&limit=15"
-        guard let url = URL(string: urlString) else {
-//            throw URLError(.badURL)
+    func fetchRandomImages<T>(_url: String, result: T.Type) async throws -> T? where T :Codable {
+        guard let url = URL(string: _url) else {
             throw ApiError.message(StringConstants.invalidURL)
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let urlRequest = URLRequest(url: url)
+        let session = try await URLSession.shared.data(for: urlRequest)
         
-        guard let httpResponse = response as? HTTPURLResponse else {
-            //throw URLError(.badServerResponse)
-            throw ApiError.message(StringConstants.noResponse)
+        guard let response = session.1 as? HTTPURLResponse else {
+            throw ApiError.message(StringConstants.somethingWentWrong)
         }
-        
-        guard httpResponse.statusCode == 200 else{
+        guard response.statusCode == 200 else {
             throw ApiError.message(StringConstants.somethingWentWrong)
         }
         
-        do{
-            return try JSONDecoder().decode([RandomImage].self, from: data)
-        }catch{
-            throw ApiError.message(StringConstants.checkInternet)
-        }
-
+        let codableResponse = try JSONDecoder().decode(T.self, from: session.0)
+        
+        return codableResponse
     }
 }

@@ -20,7 +20,7 @@ class DashboardInteractor: DashboardInteractorProtocol {
     
     func fetchImages() async throws -> [RandomImage] {
         
-        try await networkHandler.fetchRandomImages()
+        return []
 
     }
     
@@ -56,6 +56,15 @@ class DashboardInteractor: DashboardInteractorProtocol {
         catch{
             return nil
         }
+    }
+    
+    func getImagesFromWeb() async throws -> [RandomImage] {
+        let path = "https://picsum.photos/v2/list?page=7&limit=30"
+        
+        guard let response = try await self.networkHandler.fetchRandomImages(_url: path, result: [RandomImage].self) else {
+            throw ApiError.message(StringConstants.somethingWentWrong)
+        }
+        return response
     }
     
 }

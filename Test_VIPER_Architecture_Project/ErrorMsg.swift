@@ -24,4 +24,9 @@ struct StringConstants{
     static let noResponse = "No response from server"
     static let somethingWentWrong = "Something went Wrong"
     static let checkInternet = "Please check your Internet Connection"
+    static let noData = "No Data"
+}
+
+struct APIurls {
+    static let randomImageUrlPath = ""
 }

@@ -13,3 +13,10 @@ struct RandomImage: Codable, Identifiable {
     let author: String
     var download_url: String
 }
+
+enum RandomImageLoadingStates {
+    case idle
+    case loading
+    case loaded([RandomImage])
+    case error(String, Bool)
+}
