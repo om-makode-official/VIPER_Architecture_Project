@@ -11,7 +11,6 @@ protocol NetworkHandlerProtocol {
     func fetchRandomImages<T: Codable>(_url: String,result: T.Type) async throws -> T?
 }
 
-let urlString = "https://picsum.photos/v2/list?page=7&limit=30"
 class NetworkHandler: NetworkHandlerProtocol {
     
     func fetchRandomImages<T>(_url: String, result: T.Type) async throws -> T? where T :Codable {

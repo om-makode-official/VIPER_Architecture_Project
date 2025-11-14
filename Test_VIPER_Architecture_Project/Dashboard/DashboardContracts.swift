@@ -9,16 +9,12 @@ import Foundation
 import UIKit
 
 protocol DashboardInteractorProtocol {
-    func fetchImages() async throws -> [RandomImage]
-    func fetchImage(for urlString: String) async -> UIImage?
     func getImagesFromWeb() async throws -> [RandomImage]
 }
 
-protocol DashboardViewToPresenterProtocol: AnyObject {
-    func viewDidLoadAsync() async
+protocol DashboardPresenterProtocol: AnyObject {
+    func loadImagesFrommWeb()
 }
-
-
 
 protocol DashboardRouterProtocol {
     func navigateToLogin()

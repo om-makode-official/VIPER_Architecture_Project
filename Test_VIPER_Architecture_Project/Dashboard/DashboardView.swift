@@ -11,7 +11,6 @@ import SwiftUI
 struct DashboardView: View {
     
     @StateObject private var presenter: DashboardPresenter
-    @State private var hasLoadedOnce = false
     
     init(presenter: DashboardPresenter) {
         _presenter = StateObject(wrappedValue: presenter)
@@ -43,14 +42,15 @@ struct DashboardView: View {
                 presenter.loadImagesFrommWeb()
             }
         case .loading:
-            ProgressView()
+            ProgressView("Loading Images...")
+            
         case .loaded( let randomImageData):
             self.loadedView(randomImages: randomImageData)
+            
         case .error(let errorMsg, let showRetry):
             ErrorMsgLayout(message: errorMsg, onRetry: showRetry ? {
                 presenter.loadingStates = .idle
             } : nil)
-            EmptyView()
         }
     }
     
@@ -77,12 +77,16 @@ struct DashboardView: View {
                     .frame(height: 300)
                 Text(randomImage.author)
             }, placeholder: {
-                Image("placeholder_image")
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(12)
-                    .padding()
-                    .frame(height: 300)
+                ZStack {
+                        Image("placeholder_image")
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(12)
+                            .padding()
+                            .frame(height: 300)
+
+                        ProgressView()
+                    }
                     
             })
         }
