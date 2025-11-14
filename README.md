@@ -48,35 +48,39 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
 
 
 
-## Screenshots & UI Flow
+## Screenshots
 
 ### Login Screen
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.36.png" width="300"/></kbd>
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 16.40.45.png" width="300"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.22.png" width="250"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.37.png" width="250"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.51.png" width="250"/></kbd>
+
 
 ---
 
 ### Registration Screen
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.41.png" width="300"/></kbd>
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.35.58.png" width="300"/></kbd>
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.16.png" width="300"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.20.png" width="180"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.34.png" width="180"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.15.png" width="180"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.34.png" width="180"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.52.png" width="180"/></kbd>
 
 ---
 
 ### Registration Success
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.36.56.png" width="300"/></kbd>
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.18.png" width="300"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.36.08.png" width="250"/></kbd>
 
 
 ---
 
 ### UserDefaults (.plist File)
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Screen Shot 2025-11-11 at 2.38.44 PM.png" width="600" height="400"/></kbd>
+<kbd><img src="Screenshots/Screen Shot 2025-11-14 at 12.44.18 PM.png" width="600" height="400"/></kbd>
 
 ---
 
 ### Dashboard with Random Images
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.25.png" width="300"/></kbd>
-<kbd><img src="Test_VIPER_Architecture_Project/Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-11 at 14.37.45.png" width="300"/></kbd>
+<kbd><img src="Screenshots/simulator_screenshot_09541C52-0C1D-493A-B22C-1C3BD95BA4C3.png" width="250"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.37.01.png" width="250"/></kbd>
+<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.57.03.png" width="250"/></kbd>
 
 
