@@ -11,14 +11,7 @@ enum AlertType: Identifiable, Equatable {
     case success(message: String)
     case error(message: String)
     
-//    var id: String {
-//        switch self {
-//        case .success(let message):
-//            return "success-\(message)"
-//        case .error(let message):
-//            return "error-\(message)"
-//        }
-//    }
+    
     var id: UUID{
         return UUID()
     }

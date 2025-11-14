@@ -45,20 +45,5 @@ class LoginInteractor: LoginPresenterToInteractorProtocol {
             }
         }
     }
-        
-        
-        
-        
-//        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-//
-//
-//            if email == "test@gmail.com" && password == "123456" {
-//                self.presenter?.loginSuccess()
-//
-//            } else {
-//                self.presenter?.loginFailed(message: "Invalid credentials")
-//
-//            }
-//        }
     
 }
