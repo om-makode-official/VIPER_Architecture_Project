@@ -19,25 +19,39 @@ class RegisterPresenter: ObservableObject {
     }
     
     func registerTapped(email: String, password: String) {
-        interactor.registerUser(email: email, password: password) { success in
+        
+        guard !email.isEmpty, !password.isEmpty else {
+            alertMessage = .error(message: StringConstants.fillAllFields)
+            return
+        }
+                
+        guard email.contains("@"), email.contains(".") else {
+            alertMessage = .error(message: StringConstants.emailNotValid)
+            return
+        }
+                
+        guard password.count >= 6 else {
+            alertMessage = .error(message: StringConstants.passCount)
+            return
+        }
+        Task{
+        
+        let success = await interactor.registerUser(email: email, password: password)
             
-            DispatchQueue.main.async {
+            await MainActor.run {
                 if success {
-                    self.alertMessage = .success(message: "User Registered Successfully")
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now()+1){
-                        
-                        self.alertMessage = nil
-                        self.router.navigateBackToLogin()
-                    }
+                    self.alertMessage = .success(message: StringConstants.regSuccess)
                     
                 } else {
-                    self.alertMessage = .error(message: "User Already Exists")
+                    self.alertMessage = .error(message: StringConstants.alreadyExists)
                     
                 }
             }
             
         }
+    }
+    func navigateToLogin() {
+        router.navigateBackToLogin()
     }
 }
 

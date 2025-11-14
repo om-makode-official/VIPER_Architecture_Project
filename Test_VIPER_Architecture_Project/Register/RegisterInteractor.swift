@@ -10,7 +10,7 @@ import Foundation
 
 class RegisterInteractor: RegisterInteractorProtocol {
     
-    func registerUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
+    func registerUser(email: String, password: String) async -> Bool {
         let defaults = UserDefaults.standard
         
     
@@ -23,8 +23,7 @@ class RegisterInteractor: RegisterInteractorProtocol {
                 
             
             if users.contains(where: { $0.email == email }) {
-                completion(false) 
-                return
+                return false
             }
                 
             
@@ -34,10 +33,9 @@ class RegisterInteractor: RegisterInteractorProtocol {
             
             if let encoded = try? JSONEncoder().encode(users) {
                 defaults.set(encoded, forKey: "registeredUsers")
-                completion(true)
-            } else {
-                completion(false)
+                return true
             }
+        return false
     }
 }
 

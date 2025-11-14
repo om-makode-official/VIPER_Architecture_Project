@@ -8,9 +8,10 @@
 import Foundation
 
 protocol RegisterInteractorProtocol {
-    func registerUser(email: String, password: String, completion: @escaping (Bool) -> Void)
+    func registerUser(email: String, password: String) async -> Bool
 }
 
 protocol RegisterRouterProtocol {
     func navigateBackToLogin()
+    
 }

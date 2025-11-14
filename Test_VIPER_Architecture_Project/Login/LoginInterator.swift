@@ -27,12 +27,12 @@ class LoginInteractor: LoginPresenterToInteractorProtocol {
                 
         guard let data = defaults.data(forKey: "registeredUsers"),
                 let users = try? JSONDecoder().decode([Entity].self, from: data) else {
-            presenter?.loginFailed(message: "No registered users available in the database")
+            presenter?.loginFailed(message: StringConstants.noUser)
             return
             }
                 
         if email.isEmpty || password.isEmpty{
-            presenter?.loginFailed(message: "Please fill all fields")
+            presenter?.loginFailed(message: StringConstants.fillAllFields)
         }else{
             if users.contains(where: { $0.email == email && $0.password == password }) {
                 
@@ -41,7 +41,7 @@ class LoginInteractor: LoginPresenterToInteractorProtocol {
                 
                 presenter?.loginSuccess()
             } else {
-                presenter?.loginFailed(message: "Invalid Email and Password")
+                presenter?.loginFailed(message: StringConstants.invalidEmailPass)
             }
         }
     }

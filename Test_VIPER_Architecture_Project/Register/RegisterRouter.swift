@@ -11,6 +11,7 @@ import SwiftUI
 
 
 class RegisterRouter: RegisterRouterProtocol {
+    
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController?) {

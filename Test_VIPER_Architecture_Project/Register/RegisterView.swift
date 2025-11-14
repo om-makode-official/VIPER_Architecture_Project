@@ -15,9 +15,6 @@ struct RegisterView: View {
     @State private var password = ""
     @State private var showPassword = false
     
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    @State private var alertTitle = ""
     
     init(presenter: RegisterPresenter) {
         _presenter = StateObject(wrappedValue: presenter)
@@ -74,49 +71,29 @@ struct RegisterView: View {
             }
                 
                 Button("Register") {
-                    if validateCredentials(){
                         presenter.registerTapped(email: email, password: password)
-                    }
                 }
                 .buttonStyle(.borderedProminent)
             
         }
-            .onChange(of: presenter.alertMessage){ msg in
-                guard let message = msg else {
-                    return
+
+
+        .alert(item: $presenter.alertMessage) { msg in
+            Alert(title: Text(msg.title),
+                  message: Text(msg.message),
+                  dismissButton: .default(Text("OK")){
+                if case .success = msg{
+                    presenter.alertMessage = nil
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                        presenter.navigateToLogin()
+                    }
                 }
-                alertTitle = message.title
-                alertMessage = message.message
-                showAlert = true
-                
-                presenter.alertMessage = nil
-                }
-            .alert(isPresented: $showAlert){
-                Alert(title: Text(alertTitle),
-                message: Text(alertMessage),
-                dismissButton: .default(Text("Ok")))
-            }
+            })
+        }
             
         
         
     }
     
-    
-    func validateCredentials() -> Bool{
-        if email.isEmpty || password.isEmpty{
-            presenter.alertMessage = .error(message: "Please fill all fields")
-            return false
-        }
-        
-        if !email.contains("@") || !email.contains("."){
-            presenter.alertMessage =  .error(message: "Please Enter a Valid Email")
-            return false
-        }
-        
-        if password.count < 6{
-            presenter.alertMessage = .error(message: "Password must have at least 6 characters")
-            return false
-        }
-        return true
-    }
+
 }

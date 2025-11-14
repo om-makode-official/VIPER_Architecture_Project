@@ -31,6 +31,7 @@
 		AC28F2BB2EBE0BE9003B66B8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */; };
 		AC28F2BD2EBE0C2D003B66B8 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */; };
 		AC77EA422EC6266D00509B92 /* ErrorMsgLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA412EC6266D00509B92 /* ErrorMsgLayout.swift */; };
+		AC77EA442EC741C800509B92 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA432EC741C800509B92 /* StringConstants.swift */; };
 		ACC468472EC4849D002F79BB /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC468462EC4849D002F79BB /* AlertType.swift */; };
 		ACC468492EC4C7B2002F79BB /* ErrorMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC468482EC4C7B2002F79BB /* ErrorMsg.swift */; };
 		ACD0C2332EC1C04500EAD6E8 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */; };
@@ -88,6 +89,7 @@
 		AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		AC77EA412EC6266D00509B92 /* ErrorMsgLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMsgLayout.swift; sourceTree = "<group>"; };
+		AC77EA432EC741C800509B92 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		ACC468462EC4849D002F79BB /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		ACC468482EC4C7B2002F79BB /* ErrorMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMsg.swift; sourceTree = "<group>"; };
 		ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				AC28F26D2EBDDAE5003B66B8 /* ViewController.swift */,
 				AC28F29B2EBDDBB8003B66B8 /* NetworkHandler.swift */,
 				AC77EA412EC6266D00509B92 /* ErrorMsgLayout.swift */,
+				AC77EA432EC741C800509B92 /* StringConstants.swift */,
 				ACC468482EC4C7B2002F79BB /* ErrorMsg.swift */,
 				AC28F2AF2EBDE7A9003B66B8 /* CompositionRoot.swift */,
 				ACC468462EC4849D002F79BB /* AlertType.swift */,
@@ -355,6 +358,7 @@
 			files = (
 				AC28F26E2EBDDAE5003B66B8 /* ViewController.swift in Sources */,
 				ACD0C23C2EC2261F00EAD6E8 /* RegisterEntity.swift in Sources */,
+				AC77EA442EC741C800509B92 /* StringConstants.swift in Sources */,
 				ACC468492EC4C7B2002F79BB /* ErrorMsg.swift in Sources */,
 				AC28F2A22EBDDC31003B66B8 /* DashboardView.swift in Sources */,
 				ACD0C2382EC2250800EAD6E8 /* DashboardContracts.swift in Sources */,
