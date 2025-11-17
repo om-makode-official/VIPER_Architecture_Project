@@ -84,7 +84,7 @@ struct RegisterView: View {
                   dismissButton: .default(Text("OK")){
                 if case .success = msg{
                     presenter.alertMessage = nil
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                         presenter.navigateToLogin()
                     }
                 }

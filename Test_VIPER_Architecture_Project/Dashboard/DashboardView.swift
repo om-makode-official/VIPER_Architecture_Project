@@ -11,6 +11,8 @@ import SwiftUI
 struct DashboardView: View {
     
     @StateObject private var presenter: DashboardPresenter
+    @State private var showProfileSheet = false
+
     
     init(presenter: DashboardPresenter) {
         _presenter = StateObject(wrappedValue: presenter)
@@ -30,6 +32,14 @@ struct DashboardView: View {
                         presenter.logout()
                     }
                 }
+                ToolbarItem(placement: .navigationBarLeading){
+                    Button("Add Image"){
+                        presenter.openProfileSheet()
+                    }
+                }
+            }
+            .sheet(isPresented: $presenter.showProfileSheet) {
+                presenter.makeProfileBuilder()
             }
             
         }

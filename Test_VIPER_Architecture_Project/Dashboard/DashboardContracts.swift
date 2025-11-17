@@ -10,6 +10,7 @@ import UIKit
 
 protocol DashboardInteractorProtocol {
     func getImagesFromWeb() async throws -> [RandomImage]
+    func loadAddedImages() -> [RandomImage]
 }
 
 protocol DashboardPresenterProtocol: AnyObject {

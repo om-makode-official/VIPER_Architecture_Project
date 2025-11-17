@@ -15,7 +15,8 @@ class DashboardBuilder {
         
         
         let networkHandler = NetworkHandler()
-        let interactor = DashboardInteractor(networkHandler: networkHandler)
+        let profileInteractor = ProfileInteractor()
+        let interactor = DashboardInteractor(networkHandler: networkHandler, profileInteractor: profileInteractor)
         let router = DashboardRouter(navigationController: navigationController)
         let presenter = DashboardPresenter(interactor: interactor, router: router)
         let view = DashboardView(presenter: presenter)

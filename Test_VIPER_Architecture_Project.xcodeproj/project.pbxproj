@@ -32,6 +32,11 @@
 		AC28F2BD2EBE0C2D003B66B8 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */; };
 		AC77EA422EC6266D00509B92 /* ErrorMsgLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA412EC6266D00509B92 /* ErrorMsgLayout.swift */; };
 		AC77EA442EC741C800509B92 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA432EC741C800509B92 /* StringConstants.swift */; };
+		AC77EA462EC767DB00509B92 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA452EC767DB00509B92 /* ProfileView.swift */; };
+		AC77EA482EC768BF00509B92 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA472EC768BF00509B92 /* ProfilePresenter.swift */; };
+		AC77EA4A2EC76A4200509B92 /* ProfileContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA492EC76A4200509B92 /* ProfileContracts.swift */; };
+		AC77EA4D2EC76AE200509B92 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA4C2EC76AE200509B92 /* ProfileInteractor.swift */; };
+		AC77EA4F2EC76FF200509B92 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77EA4E2EC76FF200509B92 /* ProfileRouter.swift */; };
 		ACC468472EC4849D002F79BB /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC468462EC4849D002F79BB /* AlertType.swift */; };
 		ACC468492EC4C7B2002F79BB /* ErrorMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC468482EC4C7B2002F79BB /* ErrorMsg.swift */; };
 		ACD0C2332EC1C04500EAD6E8 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */; };
@@ -41,6 +46,7 @@
 		ACD0C23C2EC2261F00EAD6E8 /* RegisterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C23B2EC2261F00EAD6E8 /* RegisterEntity.swift */; };
 		ACD0C23E2EC2268C00EAD6E8 /* DashboardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C23D2EC2268C00EAD6E8 /* DashboardEntity.swift */; };
 		ACD0C2402EC319FD00EAD6E8 /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD0C23F2EC319FD00EAD6E8 /* DashboardRouter.swift */; };
+		ACF3E0682ECAFB6800016AAB /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3E0672ECAFB6800016AAB /* ProfileBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +96,11 @@
 		AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		AC77EA412EC6266D00509B92 /* ErrorMsgLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMsgLayout.swift; sourceTree = "<group>"; };
 		AC77EA432EC741C800509B92 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		AC77EA452EC767DB00509B92 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AC77EA472EC768BF00509B92 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		AC77EA492EC76A4200509B92 /* ProfileContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContracts.swift; sourceTree = "<group>"; };
+		AC77EA4C2EC76AE200509B92 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		AC77EA4E2EC76FF200509B92 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		ACC468462EC4849D002F79BB /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		ACC468482EC4C7B2002F79BB /* ErrorMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMsg.swift; sourceTree = "<group>"; };
 		ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
@@ -99,6 +110,7 @@
 		ACD0C23B2EC2261F00EAD6E8 /* RegisterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEntity.swift; sourceTree = "<group>"; };
 		ACD0C23D2EC2268C00EAD6E8 /* DashboardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEntity.swift; sourceTree = "<group>"; };
 		ACD0C23F2EC319FD00EAD6E8 /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
+		ACF3E0672ECAFB6800016AAB /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +174,7 @@
 				AC28F2AD2EBDDE42003B66B8 /* Login */,
 				AC28F2B32EBE0153003B66B8 /* Register */,
 				AC28F2AE2EBDDE81003B66B8 /* Dashboard */,
+				AC77EA4B2EC76AAA00509B92 /* Profile */,
 				AC28F2742EBDDAEE003B66B8 /* LaunchScreen.storyboard */,
 				AC28F2772EBDDAEE003B66B8 /* Info.plist */,
 			);
@@ -224,6 +237,19 @@
 				AC28F2B62EBE0B58003B66B8 /* RegisterRouter.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		AC77EA4B2EC76AAA00509B92 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AC77EA472EC768BF00509B92 /* ProfilePresenter.swift */,
+				AC77EA452EC767DB00509B92 /* ProfileView.swift */,
+				AC77EA4E2EC76FF200509B92 /* ProfileRouter.swift */,
+				ACF3E0672ECAFB6800016AAB /* ProfileBuilder.swift */,
+				AC77EA4C2EC76AE200509B92 /* ProfileInteractor.swift */,
+				AC77EA492EC76A4200509B92 /* ProfileContracts.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,11 +386,14 @@
 				ACD0C23C2EC2261F00EAD6E8 /* RegisterEntity.swift in Sources */,
 				AC77EA442EC741C800509B92 /* StringConstants.swift in Sources */,
 				ACC468492EC4C7B2002F79BB /* ErrorMsg.swift in Sources */,
+				AC77EA482EC768BF00509B92 /* ProfilePresenter.swift in Sources */,
 				AC28F2A22EBDDC31003B66B8 /* DashboardView.swift in Sources */,
+				ACF3E0682ECAFB6800016AAB /* ProfileBuilder.swift in Sources */,
 				ACD0C2382EC2250800EAD6E8 /* DashboardContracts.swift in Sources */,
 				AC28F2B22EBE014D003B66B8 /* RegisterBuilder.swift in Sources */,
 				AC28F2A62EBDDCA5003B66B8 /* LoginInterator.swift in Sources */,
 				AC28F2B92EBE0BBF003B66B8 /* RegisterPresenter.swift in Sources */,
+				AC77EA4D2EC76AE200509B92 /* ProfileInteractor.swift in Sources */,
 				AC77EA422EC6266D00509B92 /* ErrorMsgLayout.swift in Sources */,
 				AC28F2B72EBE0B58003B66B8 /* RegisterRouter.swift in Sources */,
 				AC28F2A82EBDDCD2003B66B8 /* LoginPresenter.swift in Sources */,
@@ -374,10 +403,13 @@
 				AC28F2AC2EBDDE25003B66B8 /* DashboardBuilder.swift in Sources */,
 				AC28F2AA2EBDDCEB003B66B8 /* LoginView.swift in Sources */,
 				AC28F2BD2EBE0C2D003B66B8 /* LoginBuilder.swift in Sources */,
+				AC77EA4A2EC76A4200509B92 /* ProfileContracts.swift in Sources */,
 				AC28F2B02EBDE7A9003B66B8 /* CompositionRoot.swift in Sources */,
 				AC28F26A2EBDDAE5003B66B8 /* AppDelegate.swift in Sources */,
 				AC28F2A42EBDDC74003B66B8 /* LoginRouter.swift in Sources */,
+				AC77EA4F2EC76FF200509B92 /* ProfileRouter.swift in Sources */,
 				ACD0C23E2EC2268C00EAD6E8 /* DashboardEntity.swift in Sources */,
+				AC77EA462EC767DB00509B92 /* ProfileView.swift in Sources */,
 				ACD0C2332EC1C04500EAD6E8 /* DashboardInteractor.swift in Sources */,
 				ACD0C2362EC224A200EAD6E8 /* RegisterContracts.swift in Sources */,
 				AC28F2A02EBDDC06003B66B8 /* DashboardPresenter.swift in Sources */,

@@ -7,15 +7,18 @@
 
 import Foundation
 import UIKit
-
+import SwiftUI
 
 class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
     
 
     @Published var loadingStates: RandomImageLoadingStates = .idle
+    @Published var showProfileSheet = false
     
     private let interactor: DashboardInteractorProtocol
     private let router: DashboardRouterProtocol
+    
+    
     
     init(interactor: DashboardInteractorProtocol, router: DashboardRouterProtocol) {
         self.interactor = interactor
@@ -37,14 +40,12 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
         Task {
             do {
                 let response = try await self.interactor.getImagesFromWeb()
-                if response.isEmpty == false {
-                    await MainActor.run(body: {
-                        self.loadingStates = .loaded(response)
-                    })
-                } else {
-                    await MainActor.run(body: {
-                        self.loadingStates = .error(StringConstants.noData, false)
-                    })
+                
+                let addedImages = interactor.loadAddedImages()
+                let combined = addedImages + response
+                
+                await MainActor.run{
+                    self.loadingStates = .loaded(combined)
                 }
             } catch {
                 let error = error as? ApiError
@@ -53,6 +54,22 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
                     self.loadingStates = .error(errorMsg, errorMsg ==  StringConstants.checkInternet)
                 })
             }
+        }
+    }
+    
+    func openProfileSheet(){
+        showProfileSheet = true
+    }
+    
+    func makeProfileBuilder() -> some View {
+        ProfileBuilder().createModule(dashboard: self)
+    }
+
+
+    
+    func addImageToDashboard(image: RandomImage) {
+        if case .loaded(let oldData) = loadingStates {
+            loadingStates = .loaded([image] + oldData)
         }
     }
 
