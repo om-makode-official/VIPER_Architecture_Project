@@ -83,6 +83,7 @@ struct DashboardView: View {
                     .cornerRadius(12)
                     .padding()
                     .frame(height: 300)
+                    .shadow(color: .black.opacity(0.5), radius: 10, x: 0, y: 10)
                 
             }, placeholder: {
                 ZStack {
@@ -92,6 +93,7 @@ struct DashboardView: View {
                         .cornerRadius(12)
                         .padding()
                         .frame(height: 300)
+                        .shadow(color: .black.opacity(0.5), radius: 10, x: 0, y: 10)
                     
                     ProgressView()
                 }
