@@ -11,16 +11,15 @@ import UIKit
 
 class DashboardInteractor: DashboardInteractorProtocol {
     private let networkHandler: NetworkHandlerProtocol
-    private let profileInteractor: ProfileInteractorProtocol
     
+    private let key = "addedImages"
+    private let defaults = UserDefaults.standard
     
-    init(networkHandler: NetworkHandlerProtocol, profileInteractor: ProfileInteractorProtocol) {
+    init(networkHandler: NetworkHandlerProtocol) {
         self.networkHandler = networkHandler
-        self.profileInteractor = profileInteractor
+        
     }
-    
 
-    
     func getImagesFromWeb() async throws -> [RandomImage] {
         let path = "https://picsum.photos/v2/list?page=7&limit=15"
         
@@ -30,8 +29,34 @@ class DashboardInteractor: DashboardInteractorProtocol {
         return response
     }
     
+}
+
+// MARK: - New Added Images
+    extension DashboardInteractor{
+        
+
     func loadAddedImages() -> [RandomImage]{
-        return profileInteractor.load()
+        guard let data = defaults.data(forKey: key), let images = try? JSONDecoder().decode([RandomImage].self, from: data) else{
+            return []
+        }
+        return images
+    }
+    
+    func createImage(name: String, url: String) -> RandomImage {
+        RandomImage(
+            id: UUID().uuidString,
+            author: name,
+            download_url: url
+        )
+    }
+    
+    func save(image: RandomImage){
+        var images = loadAddedImages()
+        images.append(image)
+        
+        if let data = try? JSONEncoder().encode(images){
+            defaults.set(data, forKey: key)
+        }
     }
     
 }

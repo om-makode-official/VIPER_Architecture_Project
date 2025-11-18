@@ -11,8 +11,6 @@ import SwiftUI
 struct DashboardView: View {
     
     @StateObject private var presenter: DashboardPresenter
-    @State private var showProfileSheet = false
-
     
     init(presenter: DashboardPresenter) {
         _presenter = StateObject(wrappedValue: presenter)
@@ -22,27 +20,27 @@ struct DashboardView: View {
         ZStack {
             mainView()
         }
-
-            .navigationTitle("Random Images")
-            .navigationBarBackButtonHidden()
-            .toolbar{
-                ToolbarItem(placement: .navigationBarTrailing){
-                    Button("Logout"){
-                        
-                        presenter.logout()
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading){
-                    Button("Add Image"){
-                        presenter.openProfileSheet()
-                    }
+        
+        .navigationTitle("Random Images")
+        .navigationBarBackButtonHidden()
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing){
+                Button("Logout"){
+                    
+                    presenter.logout()
                 }
             }
-            .sheet(isPresented: $presenter.showProfileSheet) {
-                presenter.makeProfileBuilder()
+            ToolbarItem(placement: .navigationBarLeading){
+                Button("Add Image"){
+                    presenter.openProfileSheet()
+                }
             }
-            
         }
+        .sheet(isPresented: $presenter.showProfileSheet) {
+            profileView()
+        }
+        
+    }
     
     @ViewBuilder
     func mainView() -> some View {
@@ -85,21 +83,68 @@ struct DashboardView: View {
                     .cornerRadius(12)
                     .padding()
                     .frame(height: 300)
-                Text(randomImage.author)
+                
             }, placeholder: {
                 ZStack {
-                        Image("placeholder_image")
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(12)
-                            .padding()
-                            .frame(height: 300)
-
-                        ProgressView()
-                    }
+                    Image("placeholder_image")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(12)
+                        .padding()
+                        .frame(height: 300)
                     
+                    ProgressView()
+                }
+                
             })
+            Text(randomImage.author)
         }
+    }
+}
+
+// MARK: - New Added Images(sheet)
+
+extension DashboardView{
+
+    func profileView() -> some View {
+        NavigationStack {
+            Form {
+                TextField("Enter Author Name", text: $presenter.name)
+                TextField("Enter Image URL", text: $presenter.imageURL)
+            }
+            .navigationTitle("Add Image")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        presenter.saveImage()
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        presenter.dismissSheet()
+                    }
+                }
+            }
+            .alert(item: $presenter.alertMessage){ msg in
+                Alert(title: Text(msg.title),
+                      message: Text(msg.message),
+                      dismissButton: .default(Text("OK")){
+                    
+                    if case .success = msg{
+                        presenter.alertMessage = nil
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                            
+                            presenter.returnData()
+                            
+                        }
+                    }
+                })
+            }
+            
+        }
+        
     }
     
 }

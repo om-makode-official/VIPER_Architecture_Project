@@ -11,6 +11,8 @@ import UIKit
 protocol DashboardInteractorProtocol {
     func getImagesFromWeb() async throws -> [RandomImage]
     func loadAddedImages() -> [RandomImage]
+    func createImage(name: String, url: String) -> RandomImage
+    func save(image: RandomImage)
 }
 
 protocol DashboardPresenterProtocol: AnyObject {
