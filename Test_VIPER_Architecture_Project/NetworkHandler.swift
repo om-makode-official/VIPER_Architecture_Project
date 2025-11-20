@@ -9,6 +9,7 @@ import Foundation
 
 protocol NetworkHandlerProtocol {
     func fetchRandomImages<T: Codable>(_url: String,result: T.Type) async throws -> T?
+    
 }
 
 class NetworkHandler: NetworkHandlerProtocol {
@@ -32,4 +33,6 @@ class NetworkHandler: NetworkHandlerProtocol {
         
         return codableResponse
     }
+    
+
 }

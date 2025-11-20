@@ -36,8 +36,11 @@ class DashboardInteractor: DashboardInteractorProtocol {
         
 
     func loadAddedImages() -> [RandomImage]{
-        guard let data = defaults.data(forKey: key), let images = try? JSONDecoder().decode([RandomImage].self, from: data) else{
+        guard let data = defaults.data(forKey: key), var images = try? JSONDecoder().decode([RandomImage].self, from: data) else{
             return []
+        }
+        for i in images.indices{
+            images[i].isLocal = true
         }
         return images
     }
@@ -46,7 +49,8 @@ class DashboardInteractor: DashboardInteractorProtocol {
         RandomImage(
             id: UUID().uuidString,
             author: name,
-            download_url: url
+            download_url: url,
+            isLocal: true
         )
     }
     
@@ -59,4 +63,36 @@ class DashboardInteractor: DashboardInteractorProtocol {
         }
     }
     
+}
+
+// MARK: - Edit Image
+
+extension DashboardInteractor{
+    
+    func replaceImage(_ updated: RandomImage){
+        var images = loadAddedImages()
+        
+        if let idx = images.firstIndex(where: {$0.id == updated.id}){
+            images[idx] = updated
+        }
+        
+        if let data = try? JSONEncoder().encode(images){
+            defaults.set(data, forKey: key)
+        }
+    }
+    
+}
+
+// MARK: - Delete Image
+
+extension DashboardInteractor{
+    
+    func removeImage(_ image: RandomImage){
+        var images = loadAddedImages()
+        images.removeAll { $0.id == image.id }
+        
+        if let data = try? JSONEncoder().encode(images){
+            defaults.set(data, forKey: key)
+        }
+    }
 }

@@ -39,6 +39,9 @@ struct RegisterView: View {
                         .padding(.horizontal)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .onChange(of: password){ newValue in
+                            presenter.validatePassword(password: newValue)
+                        }
                         .overlay(
                             Button(action: {
                                 showPassword.toggle()
@@ -49,13 +52,18 @@ struct RegisterView: View {
                                 .padding(.trailing, 30),
                             alignment: .trailing
                         )
+                    
                 }
+                
                 else{
                     SecureField("Password", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .onChange(of: password){ newValue in
+                            presenter.validatePassword(password: newValue)
+                        }
                         .overlay(
                             Button(action: {
                                 showPassword.toggle()
@@ -66,10 +74,18 @@ struct RegisterView: View {
                                 .padding(.trailing, 30),
                             alignment: .trailing
                         )
+                    
                 }
                 
             }
-                
+            Text("Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number.")
+                .font(.caption)
+                .foregroundColor(.gray)
+            Slider(value: $presenter.passwordValidate, in: 0...4, step: 1)
+                .tint(.green)
+                .padding(.horizontal)
+                .disabled(true)
+            
                 Button("Register") {
                         presenter.registerTapped(email: email, password: password)
                 }

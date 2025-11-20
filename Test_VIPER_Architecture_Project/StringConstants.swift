@@ -25,4 +25,6 @@ struct StringConstants{
     static let noUser = "No registered users available in the database"
     static let invalidEmailPass = "Invalid Email and Password"
     
+    static let deleteConfirm = "Are you sure you want to delete this image?"
+    
 }

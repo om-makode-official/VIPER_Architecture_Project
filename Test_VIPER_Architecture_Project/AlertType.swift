@@ -7,9 +7,10 @@
 
 import Foundation
 
-enum AlertType: Identifiable, Equatable {
+enum AlertType: Identifiable {
     case success(message: String)
     case error(message: String)
+    case alert(image: RandomImage)
     
     
     var id: String {
@@ -18,6 +19,8 @@ enum AlertType: Identifiable, Equatable {
             return "success-\(msg)"
         case .error(let msg):
             return "error-\(msg)"
+        case .alert(let image):
+            return image.id
         }
     }
     
@@ -27,14 +30,19 @@ enum AlertType: Identifiable, Equatable {
             return "Success"
         case .error:
             return "Error"
+        case .alert:
+            return "Alert"
         }
     }
     
     var message: String {
         switch self {
         case .success(let msg),
-             .error(let msg):
+                .error(let msg):
             return msg
+        case .alert:
+            return "Are you sure you want to delete this image?"
+
         }
     }
 }

@@ -13,10 +13,13 @@ protocol DashboardInteractorProtocol {
     func loadAddedImages() -> [RandomImage]
     func createImage(name: String, url: String) -> RandomImage
     func save(image: RandomImage)
+    func replaceImage(_ updated: RandomImage)
+    func removeImage(_ image: RandomImage)
 }
 
 protocol DashboardPresenterProtocol: AnyObject {
     func loadImagesFrommWeb()
+    
 }
 
 protocol DashboardRouterProtocol {

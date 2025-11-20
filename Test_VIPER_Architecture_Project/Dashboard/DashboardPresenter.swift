@@ -19,6 +19,8 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
     @Published var imageURL: String = ""
     @Published var alertMessage: AlertType? = nil
     
+    @Published var editingImageID: String? = nil
+    
     private var savedImage: RandomImage? = nil
     
     private let interactor: DashboardInteractorProtocol
@@ -55,14 +57,20 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
                     self.loadingStates = .loaded(combined)
                 }
             } catch {
-                let error = error as? ApiError
-                let errorMsg = error?.displayMsg ?? StringConstants.somethingWentWrong
+                let errorMsg = (error as? ApiError)?.displayMsg ?? StringConstants.somethingWentWrong
+                let check = checkError(error)
                 await MainActor.run(body: {
-                    self.loadingStates = .error(errorMsg, errorMsg ==  StringConstants.checkInternet)
+//                    self.loadingStates = .error(errorMsg, errorMsg ==  StringConstants.checkInternet)
+                    self.loadingStates = .error(errorMsg, check)
                 })
             }
         }
     }
+    private func checkError(_ error: Error) -> Bool {
+        let nsError = error as NSError
+        return nsError.domain == NSURLErrorDomain
+    }
+
 }
     
 // MARK: - New Added Images(sheet)
@@ -73,7 +81,9 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
         name = ""
         imageURL = ""
         savedImage = nil
+        editingImageID = nil
         showProfileSheet = true
+        
     }
     
     func dismissSheet() {
@@ -87,32 +97,45 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
             
         }
         
-        guard imageURL.contains("http") || imageURL.contains("https") else{
+        guard imageURL.contains("http") else{
             alertMessage = .error(message: StringConstants.invalidURL)
             return
         }
         
         Task{
-            let newImage = interactor.createImage(name: name, url: imageURL)
+            if let id = editingImageID{
+                replaceImage(id: id)
+            }else{
+                let newImage = interactor.createImage(name: name, url: imageURL)
+                
+                interactor.save(image: newImage)
+                self.savedImage = newImage
+            }
             
-            interactor.save(image: newImage)
-            self.savedImage = newImage
         
         
         await MainActor.run{
-            self.alertMessage = .success(message: "Image Added Successfully")
+            if editingImageID != nil{
+                self.alertMessage = .success(message: "Image Updated Successfully")
+            }else{
+                self.alertMessage = .success(message: "Image Added Successfully")
+            }
+            
         }
         }
     }
     
     func returnData(){
-        guard let image = savedImage else{
-            let image = interactor.createImage(name: name, url: imageURL)
-            addImageToDashboard(image: image)
+        
+        if editingImageID != nil{
             dismissSheet()
+            editingImageID = nil
             return
         }
-        addImageToDashboard(image: image)
+        if let image = savedImage{
+            addImageToDashboard(image: image)
+            
+        }
         dismissSheet()
         
         
@@ -127,4 +150,45 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
     }
 
 
+}
+
+// MARK: - Edit Image
+
+extension DashboardPresenter{
+    
+    func editImage(_ image: RandomImage){
+        name = image.author
+        imageURL = image.download_url
+        editingImageID = image.id
+        showProfileSheet = true
+        
+    }
+    
+    func replaceImage(id: String){
+        let updatedImage = RandomImage(id: id, author: name, download_url: imageURL, isLocal: true)
+        interactor.replaceImage(updatedImage)
+        
+        if case .loaded(let oldImages) = loadingStates{
+            let newList = oldImages.map { img in
+                img.id == id ? updatedImage : img
+            }
+            loadingStates = .loaded(newList)
+        }
+        savedImage = updatedImage
+    }
+    
+}
+
+// MARK: - Delete Image
+
+extension DashboardPresenter{
+    
+    func deleteImage(_ image: RandomImage){
+        interactor.removeImage(image)
+        
+        if case .loaded(let oldList) = loadingStates{
+            let newList = oldList.filter{ $0.id != image.id}
+            loadingStates = .loaded(newList)
+        }
+    }
 }

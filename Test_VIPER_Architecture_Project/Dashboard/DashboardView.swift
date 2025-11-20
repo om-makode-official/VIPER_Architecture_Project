@@ -19,8 +19,28 @@ struct DashboardView: View {
     var body: some View {
         ZStack {
             mainView()
+
         }
-        
+        .alert(item: $presenter.alertMessage) { msg in
+            switch msg {
+            case .alert(let image):
+                return Alert(
+                    title: Text(msg.title),
+                    message: Text(msg.message),
+                    primaryButton: .destructive(Text("Delete")) {
+                        presenter.deleteImage(image)
+                    },
+                    secondaryButton: .cancel()
+                )
+
+            case .success, .error:
+                return Alert(
+                    title: Text(msg.title),
+                    message: Text(msg.message),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+        }
         .navigationTitle("Random Images")
         .navigationBarBackButtonHidden()
         .toolbar{
@@ -99,7 +119,30 @@ struct DashboardView: View {
                 }
                 
             })
-            Text(randomImage.author)
+            ZStack{
+                Text(randomImage.author)
+                if randomImage.isLocal ?? false{
+                    HStack{
+                        Button{
+                            presenter.editImage(randomImage)
+                        }label: {
+                            Image(systemName: "square.and.pencil")
+                                .font(.title3)
+                        }
+                        Button(role: .destructive) {
+                            presenter.alertMessage = .alert(image: randomImage)
+//                            presenter.deleteImage(randomImage)
+                        } label: {
+                            Image(systemName: "trash")
+                                .font(.title3)
+                        }
+                    }
+                    .frame(maxWidth: .infinity ,alignment: .trailing)
+                    
+
+                }
+            }.padding(.horizontal)
+            
         }
     }
 }
@@ -113,8 +156,9 @@ extension DashboardView{
             Form {
                 TextField("Enter Author Name", text: $presenter.name)
                 TextField("Enter Image URL", text: $presenter.imageURL)
+                
             }
-            .navigationTitle("Add Image")
+            .navigationTitle(presenter.editingImageID == nil ? "Add Image" : "Edit Image")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
