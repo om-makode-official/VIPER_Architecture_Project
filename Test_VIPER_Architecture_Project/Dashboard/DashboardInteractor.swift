@@ -12,7 +12,7 @@ import UIKit
 class DashboardInteractor: DashboardInteractorProtocol {
     private let networkHandler: NetworkHandlerProtocol
     
-    private let key = "addedImages"
+//    private let key = "addedImages"
     private let defaults = UserDefaults.standard
     
     init(networkHandler: NetworkHandlerProtocol) {
@@ -34,9 +34,14 @@ class DashboardInteractor: DashboardInteractorProtocol {
 // MARK: - New Added Images
     extension DashboardInteractor{
         
+        private var currentUserKey: String{
+            let email = defaults.string(forKey: "loggedInUserEmail") ?? "unknown"
+            return "addedImages_\(email)"
+        }
+        
 
     func loadAddedImages() -> [RandomImage]{
-        guard let data = defaults.data(forKey: key), var images = try? JSONDecoder().decode([RandomImage].self, from: data) else{
+        guard let data = defaults.data(forKey: currentUserKey), var images = try? JSONDecoder().decode([RandomImage].self, from: data) else{
             return []
         }
         for i in images.indices{
@@ -59,7 +64,7 @@ class DashboardInteractor: DashboardInteractorProtocol {
         images.append(image)
         
         if let data = try? JSONEncoder().encode(images){
-            defaults.set(data, forKey: key)
+            defaults.set(data, forKey: currentUserKey)
         }
     }
     
@@ -77,7 +82,7 @@ extension DashboardInteractor{
         }
         
         if let data = try? JSONEncoder().encode(images){
-            defaults.set(data, forKey: key)
+            defaults.set(data, forKey: currentUserKey)
         }
     }
     
@@ -92,7 +97,7 @@ extension DashboardInteractor{
         images.removeAll { $0.id == image.id }
         
         if let data = try? JSONEncoder().encode(images){
-            defaults.set(data, forKey: key)
+            defaults.set(data, forKey: currentUserKey)
         }
     }
 }

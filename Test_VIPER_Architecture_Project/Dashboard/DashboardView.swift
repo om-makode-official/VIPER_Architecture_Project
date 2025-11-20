@@ -41,7 +41,7 @@ struct DashboardView: View {
                 )
             }
         }
-        .navigationTitle("Random Images")
+        .navigationTitle("Images")
         .navigationBarBackButtonHidden()
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing){
