@@ -43,32 +43,45 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
         
         router.navigateToLogin()
     }
-    
-    func loadImagesFrommWeb() {
+
+    func loadImages(){
         self.loadingStates = .loading
-        Task {
-            do {
-                let response = try await self.interactor.getImagesFromWeb()
-                
-                let addedImages = interactor.loadAddedImages()
-                let combined = addedImages + response
-                
-                await MainActor.run{
-                    self.loadingStates = .loaded(combined)
+        Task{
+            if !interactor.isAPILoaded(){
+                do{
+                    let apiImages = try await interactor.getImagesFromWeb()
+                    
+                    
+                    interactor.saveInitialAPIImages(apiImages)
+                    interactor.setAPILoaded()
+                    
+                    let addedImages = interactor.loadAddedImages()
+                    let finalList = addedImages + apiImages
+                    
+                    let copy = finalList
+                    await MainActor.run{
+                        self.loadingStates = .loaded(copy)
+                    }
+                    
+                    
+                }catch{
+                    let errorMsg = (error as? ApiError)?.displayMsg ?? StringConstants.somethingWentWrong
+                    await MainActor.run{
+                        self.loadingStates = .error(errorMsg, true)
+                    }
                 }
-            } catch {
-                let errorMsg = (error as? ApiError)?.displayMsg ?? StringConstants.somethingWentWrong
-                let check = checkError(error)
-                await MainActor.run(body: {
-//                    self.loadingStates = .error(errorMsg, errorMsg ==  StringConstants.checkInternet)
-                    self.loadingStates = .error(errorMsg, check)
-                })
+            }
+            else{
+                let addedImages = interactor.loadAddedImages()
+                let apiImages = interactor.loadInitialAPIImages()
+                let finalList = addedImages + apiImages
+                
+                let copy = finalList
+                await MainActor.run{
+                    self.loadingStates = .loaded(copy)
+                }
             }
         }
-    }
-    private func checkError(_ error: Error) -> Bool {
-        let nsError = error as NSError
-        return nsError.domain == NSURLErrorDomain
     }
 
 }
@@ -165,16 +178,15 @@ extension DashboardPresenter{
     }
     
     func replaceImage(id: String){
-        let updatedImage = RandomImage(id: id, author: name, download_url: imageURL, isLocal: true)
+        let updatedImage = RandomImage(id: id, author: name, download_url: imageURL)
         interactor.replaceImage(updatedImage)
         
-        if case .loaded(let oldImages) = loadingStates{
-            let newList = oldImages.map { img in
-                img.id == id ? updatedImage : img
-            }
-            loadingStates = .loaded(newList)
+        if case .loaded(var oldImages) = loadingStates,
+           let index = oldImages.firstIndex(where: {$0.id == id}){
+            oldImages[index] = updatedImage
+            loadingStates = .loaded(oldImages)
         }
-        savedImage = updatedImage
+        
     }
     
 }
@@ -191,4 +203,14 @@ extension DashboardPresenter{
             loadingStates = .loaded(newList)
         }
     }
+}
+
+// MARK: - Preview
+
+extension DashboardPresenter{
+    
+    func updatePreview(){
+        imageURL = imageURL.isEmpty ? "" : imageURL
+    }
+    
 }

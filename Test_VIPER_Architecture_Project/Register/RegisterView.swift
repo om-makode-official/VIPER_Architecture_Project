@@ -40,7 +40,7 @@ struct RegisterView: View {
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .onChange(of: password){ newValue in
-                            presenter.validatePassword(password: newValue)
+                            _ = presenter.validatePassword(password: newValue)
                         }
                         .overlay(
                             Button(action: {
@@ -62,7 +62,7 @@ struct RegisterView: View {
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .onChange(of: password){ newValue in
-                            presenter.validatePassword(password: newValue)
+                            _ = presenter.validatePassword(password: newValue)
                         }
                         .overlay(
                             Button(action: {

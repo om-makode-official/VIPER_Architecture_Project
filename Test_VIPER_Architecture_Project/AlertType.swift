@@ -41,7 +41,7 @@ enum AlertType: Identifiable {
                 .error(let msg):
             return msg
         case .alert:
-            return "Are you sure you want to delete this image?"
+            return StringConstants.deleteConfirm
 
         }
     }

@@ -67,7 +67,7 @@ struct DashboardView: View {
         switch presenter.loadingStates {
         case .idle:
             Color.white.onAppear {
-                presenter.loadImagesFrommWeb()
+                presenter.loadImages()
             }
         case .loading:
             ProgressView("Loading Images...")
@@ -121,7 +121,7 @@ struct DashboardView: View {
             })
             ZStack{
                 Text(randomImage.author)
-                if randomImage.isLocal ?? false{
+                
                     HStack{
                         Button{
                             presenter.editImage(randomImage)
@@ -131,7 +131,6 @@ struct DashboardView: View {
                         }
                         Button(role: .destructive) {
                             presenter.alertMessage = .alert(image: randomImage)
-//                            presenter.deleteImage(randomImage)
                         } label: {
                             Image(systemName: "trash")
                                 .font(.title3)
@@ -140,7 +139,7 @@ struct DashboardView: View {
                     .frame(maxWidth: .infinity ,alignment: .trailing)
                     
 
-                }
+                
             }.padding(.horizontal)
             
         }
@@ -155,9 +154,54 @@ extension DashboardView{
         NavigationStack {
             Form {
                 TextField("Enter Author Name", text: $presenter.name)
+
                 TextField("Enter Image URL", text: $presenter.imageURL)
+                    .onChange(of: presenter.imageURL) { _ in
+                        presenter.updatePreview()
+                    }
+            
+
                 
+                VStack {
+                    Spacer()
+                    Text("Preview")
+                        .frame(alignment: .center)
+                        .foregroundColor(Color.orange)
+                    if let urlString = presenter.imageURL,
+                       let url = URL(string: urlString) {
+                        
+                        AsyncImage(url: url) { img in
+                            if let image = img.image {
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(alignment: .center)
+                                    .cornerRadius(20)
+                                    .padding(.vertical, 10)
+                            } else {
+                                ZStack{
+                                    Image("placeholder_image")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .cornerRadius(20)
+                                        .padding(.vertical, 10)
+                                    ProgressView()
+                                }
+                                
+                            }
+                        }
+
+                    } else {
+                        
+                        Image("placeholder_image")
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .padding(.vertical, 10)
+                    }
+                }
             }
+
             .navigationTitle(presenter.editingImageID == nil ? "Add Image" : "Edit Image")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
