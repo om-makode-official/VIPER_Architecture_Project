@@ -12,7 +12,6 @@ struct RandomImage: Codable, Identifiable {
     let id: String
     let author: String
     var download_url: String
-    var isLocal: Bool? = false
 }
 
 enum RandomImageLoadingStates {
