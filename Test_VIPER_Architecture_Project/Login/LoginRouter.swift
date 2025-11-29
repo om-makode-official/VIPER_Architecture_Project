@@ -6,29 +6,45 @@
 //
 
 import Foundation
-import UIKit
-import SwiftUI
+//import UIKit
+//import SwiftUI
 
 
 class LoginRouter: LoginPresenterToRouterProtocol {
     
-    private let navigationController: UINavigationController
+    //    private let navigationController: UINavigationController
+    //
+    //    init(navigationController: UINavigationController) {
+    //
+    //        self.navigationController = navigationController
+    //
+    //
+    //    }
+    //
+    //    func navigateToDashboard() {
+    //        let dashboardVC = DashboardBuilder().createModule(navigationController: navigationController)
+    //
+    //        navigationController.pushViewController(dashboardVC, animated: true)
+    //    }
+    //
+    //    func navigateToRegister(){
+    //        let registerVC = RegisterBuilder().createModule(navigationController: navigationController)
+    //        navigationController.pushViewController(registerVC, animated: true)
+    //    }
+
+    var openRegisterPage: () -> Void
+    var openDashboardPage: () -> Void
     
-    init(navigationController: UINavigationController) {
-        
-        self.navigationController = navigationController
-        
-        
-    }
-    
-    func navigateToDashboard() {
-        let dashboardVC = DashboardBuilder().createModule(navigationController: navigationController)
-        
-        navigationController.pushViewController(dashboardVC, animated: true)
+    init(openRegisterPage: @escaping () -> Void, openDashboardPage: @escaping () -> Void) {
+        self.openRegisterPage = openRegisterPage
+        self.openDashboardPage = openDashboardPage
     }
     
     func navigateToRegister(){
-        let registerVC = RegisterBuilder().createModule(navigationController: navigationController)
-        navigationController.pushViewController(registerVC, animated: true)
+        openRegisterPage()
     }
+    func navigateToDashboard(){
+        openDashboardPage()
+    }
+    
 }

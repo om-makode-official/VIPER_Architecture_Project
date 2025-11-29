@@ -10,11 +10,20 @@ import UIKit
 import SwiftUI
 
 class RegisterBuilder{
-    func createModule(navigationController: UINavigationController?) -> UIViewController{
+//    func createModule(navigationController: UINavigationController?) -> UIViewController{
+//        let interactor = RegisterInteractor()
+//        let router = RegisterRouter(navigationController: navigationController)
+//        let presenter = RegisterPresenter(interactor: interactor, router: router)
+//        let view = RegisterView(presenter: presenter)
+//        return UIHostingController(rootView: view)
+//    }
+    
+    func createModule(openLoginPage: @escaping () -> Void) -> UIViewController{
         let interactor = RegisterInteractor()
-        let router = RegisterRouter(navigationController: navigationController)
+        let router = RegisterRouter(openLoginPage: openLoginPage)
         let presenter = RegisterPresenter(interactor: interactor, router: router)
         let view = RegisterView(presenter: presenter)
         return UIHostingController(rootView: view)
     }
+    
 }

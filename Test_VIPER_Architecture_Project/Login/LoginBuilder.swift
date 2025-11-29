@@ -7,13 +7,25 @@
 
 import Foundation
 import SwiftUI
-import UIKit
+//import UIKit
 
 class LoginBuilder {
-    func createModule(navigationController: UINavigationController) -> UIViewController {
+    //    func createModule(navigationController: UINavigationController) -> UIViewController {
+    //
+    //        let interactor = LoginInteractor(networkHandler: NetworkHandler())
+    //        let router = LoginRouter(navigationController: navigationController)
+    //        let presenter = LoginPresenter(interactor: interactor, router: router)
+    //        let view = LoginView(presenter: presenter)
+    //
+    //        interactor.presenter = presenter
+    //
+    //        return UIHostingController(rootView: view)
+    //    }
+    
+    func createModule(openRegisterPage: @escaping () -> Void, openDashboardPage: @escaping () -> Void) -> UIViewController{
         
         let interactor = LoginInteractor(networkHandler: NetworkHandler())
-        let router = LoginRouter(navigationController: navigationController)
+        let router = LoginRouter(openRegisterPage: openRegisterPage, openDashboardPage: openDashboardPage)
         let presenter = LoginPresenter(interactor: interactor, router: router)
         let view = LoginView(presenter: presenter)
         
@@ -21,4 +33,7 @@ class LoginBuilder {
         
         return UIHostingController(rootView: view)
     }
+    
+    
+    
 }
