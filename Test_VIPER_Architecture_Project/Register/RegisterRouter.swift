@@ -12,13 +12,13 @@ import SwiftUI
 
 class RegisterRouter: RegisterRouterProtocol {
     
-    weak var navigationController: UINavigationController?
+    var openLoginPage: () -> Void
     
-    init(navigationController: UINavigationController?) {
-        self.navigationController = navigationController
+    init(openLoginPage: @escaping () -> Void) {
+        self.openLoginPage = openLoginPage
     }
     
     func navigateBackToLogin() {
-        navigationController?.popViewController(animated: true)
+        openLoginPage()
     }
 }

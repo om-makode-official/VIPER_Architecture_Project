@@ -9,14 +9,25 @@ import Foundation
 import UIKit
 
 class DashboardRouter: DashboardRouterProtocol {
-    private let navigationController: UINavigationController
-
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    //    private let navigationController: UINavigationController
+    //
+    //    init(navigationController: UINavigationController) {
+    //        self.navigationController = navigationController
+    //    }
+    //
+    //    func navigateToLogin() {
+    //        let loginVC = LoginBuilder().createModule(navigationController: navigationController)
+    //        navigationController.setViewControllers([loginVC], animated: true)
+    //    }
+    
+    var openLoginPage: () -> Void
+    
+    init(openLoginPage: @escaping () -> Void) {
+        self.openLoginPage = openLoginPage
     }
-
+    
     func navigateToLogin() {
-        let loginVC = LoginBuilder().createModule(navigationController: navigationController)
-        navigationController.setViewControllers([loginVC], animated: true)
+        openLoginPage()
+        
     }
 }

@@ -184,7 +184,10 @@ extension DashboardPresenter{
         if case .loaded(var oldImages) = loadingStates,
            let index = oldImages.firstIndex(where: {$0.id == id}){
             oldImages[index] = updatedImage
-            loadingStates = .loaded(oldImages)
+            DispatchQueue.main.async {
+                self.loadingStates = .loaded(oldImages)
+            }
+            
         }
         
     }
