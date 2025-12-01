@@ -163,12 +163,12 @@
 		AC28F2AD2EBDDE42003B66B8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				AC28F2A72EBDDCD2003B66B8 /* LoginPresenter.swift */,
+				AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */,
 				AC28F2A92EBDDCEB003B66B8 /* LoginView.swift */,
+				AC28F2A72EBDDCD2003B66B8 /* LoginPresenter.swift */,
+				AC28F2A52EBDDCA5003B66B8 /* LoginInterator.swift */,
 				AC28F2A32EBDDC74003B66B8 /* LoginRouter.swift */,
 				ACD0C2392EC2253E00EAD6E8 /* LoginContracts.swift */,
-				AC28F2BC2EBE0C2D003B66B8 /* LoginBuilder.swift */,
-				AC28F2A52EBDDCA5003B66B8 /* LoginInterator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -176,13 +176,13 @@
 		AC28F2AE2EBDDE81003B66B8 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				AC28F2AB2EBDDE25003B66B8 /* DashboardBuilder.swift */,
+				AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */,
 				AC28F29F2EBDDC06003B66B8 /* DashboardPresenter.swift */,
 				ACD0C2322EC1C04500EAD6E8 /* DashboardInteractor.swift */,
+				ACD0C23D2EC2268C00EAD6E8 /* DashboardEntity.swift */,
 				ACD0C2372EC2250800EAD6E8 /* DashboardContracts.swift */,
 				ACD0C23F2EC319FD00EAD6E8 /* DashboardRouter.swift */,
-				AC28F2A12EBDDC31003B66B8 /* DashboardView.swift */,
-				AC28F2AB2EBDDE25003B66B8 /* DashboardBuilder.swift */,
-				ACD0C23D2EC2268C00EAD6E8 /* DashboardEntity.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -191,12 +191,12 @@
 			isa = PBXGroup;
 			children = (
 				AC28F2B12EBE014D003B66B8 /* RegisterBuilder.swift */,
-				AC28F2B42EBE0ABC003B66B8 /* RegisterInteractor.swift */,
-				ACD0C2352EC224A200EAD6E8 /* RegisterContracts.swift */,
-				ACD0C23B2EC2261F00EAD6E8 /* RegisterEntity.swift */,
-				AC28F2B82EBE0BBF003B66B8 /* RegisterPresenter.swift */,
 				AC28F2BA2EBE0BE9003B66B8 /* RegisterView.swift */,
+				AC28F2B82EBE0BBF003B66B8 /* RegisterPresenter.swift */,
+				AC28F2B42EBE0ABC003B66B8 /* RegisterInteractor.swift */,
 				AC28F2B62EBE0B58003B66B8 /* RegisterRouter.swift */,
+				ACD0C23B2EC2261F00EAD6E8 /* RegisterEntity.swift */,
+				ACD0C2352EC224A200EAD6E8 /* RegisterContracts.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";

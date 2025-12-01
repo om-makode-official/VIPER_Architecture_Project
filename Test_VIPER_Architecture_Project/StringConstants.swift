@@ -27,4 +27,10 @@ struct StringConstants{
     
     static let deleteConfirm = "Are you sure you want to delete this image?"
     
+    static let imgUpdated = "Image Updated Successfully"
+    static let imgAdded = "Image Added Successfully"
+    
+    static let enterImageURL = "Please Enter Image URL"
+    static let enterAuthorName = "Please Enter Author Name"
+    
 }

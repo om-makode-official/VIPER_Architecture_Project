@@ -12,25 +12,6 @@ import Foundation
 
 class LoginRouter: LoginPresenterToRouterProtocol {
     
-    //    private let navigationController: UINavigationController
-    //
-    //    init(navigationController: UINavigationController) {
-    //
-    //        self.navigationController = navigationController
-    //
-    //
-    //    }
-    //
-    //    func navigateToDashboard() {
-    //        let dashboardVC = DashboardBuilder().createModule(navigationController: navigationController)
-    //
-    //        navigationController.pushViewController(dashboardVC, animated: true)
-    //    }
-    //
-    //    func navigateToRegister(){
-    //        let registerVC = RegisterBuilder().createModule(navigationController: navigationController)
-    //        navigationController.pushViewController(registerVC, animated: true)
-    //    }
 
     var openRegisterPage: () -> Void
     var openDashboardPage: () -> Void

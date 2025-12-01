@@ -47,20 +47,20 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
     func loadImages(){
         self.loadingStates = .loading
         Task{
-            if !interactor.isAPILoaded(){
+            
+            let addedImages = interactor.loadAddedImages()
+            let apiImages = interactor.loadInitialAPIImages()
+            
+            if addedImages.isEmpty && apiImages.isEmpty{
                 do{
                     let apiImages = try await interactor.getImagesFromWeb()
                     
                     
                     interactor.saveInitialAPIImages(apiImages)
-                    interactor.setAPILoaded()
+                    let finalList = apiImages
                     
-                    let addedImages = interactor.loadAddedImages()
-                    let finalList = addedImages + apiImages
-                    
-                    let copy = finalList
                     await MainActor.run{
-                        self.loadingStates = .loaded(copy)
+                        self.loadingStates = .loaded(finalList)
                     }
                     
                     
@@ -72,13 +72,11 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
                 }
             }
             else{
-                let addedImages = interactor.loadAddedImages()
-                let apiImages = interactor.loadInitialAPIImages()
-                let finalList = addedImages + apiImages
                 
-                let copy = finalList
+                let finalList = addedImages + apiImages
+
                 await MainActor.run{
-                    self.loadingStates = .loaded(copy)
+                    self.loadingStates = .loaded(finalList)
                 }
             }
         }
@@ -104,10 +102,13 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
     }
     
     func saveImage() {
-        guard !name.isEmpty, !imageURL.isEmpty else {
-            alertMessage = .error(message: StringConstants.fillAllFields)
+        guard !name.isEmpty else {
+            alertMessage = .error(message: StringConstants.enterAuthorName)
             return
-            
+        }
+        guard !imageURL.isEmpty else{
+            alertMessage = .error(message: StringConstants.enterImageURL)
+            return
         }
         
         guard imageURL.contains("http") else{
@@ -129,9 +130,9 @@ class DashboardPresenter: ObservableObject, DashboardPresenterProtocol {
         
         await MainActor.run{
             if editingImageID != nil{
-                self.alertMessage = .success(message: "Image Updated Successfully")
+                self.alertMessage = .success(message: StringConstants.imgUpdated)
             }else{
-                self.alertMessage = .success(message: "Image Added Successfully")
+                self.alertMessage = .success(message: StringConstants.imgAdded)
             }
             
         }

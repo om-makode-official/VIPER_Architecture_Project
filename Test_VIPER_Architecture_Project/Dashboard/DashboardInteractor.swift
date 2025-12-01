@@ -43,10 +43,6 @@ class DashboardInteractor: DashboardInteractorProtocol {
         private var apiImagesKey: String {
             "apiImages_\(currentUserEmail)"
         }
-
-        private var apiLoadedKey: String {
-            "isAPILoaded_\(currentUserEmail)"
-        }
         
 
     func loadAddedImages() -> [RandomImage]{
@@ -135,13 +131,6 @@ extension DashboardInteractor{
 
 extension DashboardInteractor{
     
-    func isAPILoaded() -> Bool{
-        defaults.bool(forKey: apiLoadedKey)
-    }
-    
-    func setAPILoaded(){
-        defaults.set(true, forKey: apiLoadedKey)
-    }
     func saveInitialAPIImages(_ images: [RandomImage]) {
             saveAPIImages(images)
         }

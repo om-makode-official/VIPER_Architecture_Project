@@ -11,17 +11,6 @@ import SwiftUI
 
 class DashboardBuilder {
     
-//    func createModule(navigationController: UINavigationController) -> UIViewController {
-//
-//
-//        let networkHandler = NetworkHandler()
-//        let interactor = DashboardInteractor(networkHandler: networkHandler)
-//        let router = DashboardRouter(navigationController: navigationController)
-//        let presenter = DashboardPresenter(interactor: interactor, router: router)
-//        let view = DashboardView(presenter: presenter)
-//        return UIHostingController(rootView: view)
-//    }
-    
     func createModule(openLoginPage: @escaping () -> Void) -> UIViewController{
         let networkHandler = NetworkHandler()
         let interactor = DashboardInteractor(networkHandler: networkHandler)

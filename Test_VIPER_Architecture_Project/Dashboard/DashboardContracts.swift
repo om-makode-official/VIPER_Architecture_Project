@@ -15,9 +15,7 @@ protocol DashboardInteractorProtocol {
     func save(image: RandomImage)
     func replaceImage(_ updated: RandomImage)
     func removeImage(_ image: RandomImage)
-    func isAPILoaded() -> Bool
     func saveInitialAPIImages(_ images: [RandomImage])
-    func setAPILoaded()
     func loadInitialAPIImages() -> [RandomImage]
 }
 
