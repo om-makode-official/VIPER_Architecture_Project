@@ -59,48 +59,48 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
 ## Screenshots
 
 ### Login Screen
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.22.png" width="250"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.37.png" width="250"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.51.png" width="250"/></kbd>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.22.png" width="250"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.37.png" width="250"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.51.png" width="250"/>
 
 ---
 
 ### Registration Screen
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.20.png" width="180"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.34.png" width="180"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.15.png" width="180"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.34.png" width="180"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.52.png" width="180"/></kbd>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.20.png" width="180"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.34.png" width="180"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.15.png" width="180"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.34.png" width="180"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.52.png" width="180"/>
 
 ---
 
 ### Registration Success
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 14.51.03.png" width="250"/></kbd>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 14.51.03.png" width="250"/>
 
 ---
 
 ### Dashboard with Random Images
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.21.png" width="250"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.11.png" width="250"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.31.png" width="250"/></kbd>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.21.png" width="250"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.11.png" width="250"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.31.png" width="250"/>
 
 ---
 
 ### Add Image Sheet
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.43.png" width="200"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.52.png" width="200"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.12.17.png" width="200"/></kbd>
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.13.44.png" width="200"/></kbd>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.43.png" width="200"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.52.png" width="200"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.12.17.png" width="200"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.13.44.png" width="200"/>
 
 ---
 
 ### New Image Added on UI
-<kbd><img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.13.59.png" width="250"/></kbd>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.13.59.png" width="250"/>
 
 ---
 
 ### UserDefaults (.plist File)
-<kbd><img src="Screenshots/Screen Shot 2025-11-18 at 2.47.57 PM.png" width="600" height="400"/></kbd>
+<img src="Screenshots/Screen Shot 2025-11-18 at 2.47.57 PM.png" width="600" height="400"/>
 
 
 
