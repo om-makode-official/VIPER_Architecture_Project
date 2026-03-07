@@ -100,7 +100,7 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
 ---
 
 ### UserDefaults (.plist File)
-<img src="Screenshots/Screen Shot 2025-11-18 at 2.47.57 PM.png" width="600" height="400"/>
+<img src="2.47.57PM.png" width="600" height="400"/>
 
 
 
