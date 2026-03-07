@@ -59,7 +59,7 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
 ## Screenshots
 
 ### Login Screen
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.22.png" width="250"/>
+<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.22.png"/>
 <img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.37.png" width="250"/>
 <img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.51.png" width="250"/>
 
