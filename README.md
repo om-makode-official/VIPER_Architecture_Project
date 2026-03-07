@@ -59,48 +59,47 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
 ## Screenshots
 
 ### Login Screen
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.22.png"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.37.png" width="250"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.33.51.png" width="250"/>
+<img src="Screenshots/img1.png" width="250"/>
+<img src="Screenshots/img2.png" width="250"/>
+<img src="Screenshots/img3.png" width="250"/>
 
 ---
 
 ### Registration Screen
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.20.png" width="180"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.34.34.png" width="180"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.15.png" width="180"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.34.png" width="180"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-14 at 12.35.52.png" width="180"/>
+<img src="Screenshots/img4.png" width="180"/>
+<img src="Screenshots/img5.png" width="180"/>
+<img src="Screenshots/img6.png" width="180"/>
+<img src="Screenshots/img7.png" width="180"/>
+<img src="Screenshots/img8.png" width="180"/>
 
 ---
 
 ### Registration Success
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 14.51.03.png" width="250"/>
+<img src="Screenshots/img9.png" width="250"/>
 
 ---
 
 ### Dashboard with Random Images
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.21.png" width="250"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.11.png" width="250"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.31.png" width="250"/>
+<img src="Screenshots/img10.png" width="250"/>
+<img src="Screenshots/img11.png" width="250"/>
+<img src="Screenshots/img12png" width="250"/>
 
 ---
 
 ### Add Image Sheet
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.43.png" width="200"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.11.52.png" width="200"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.12.17.png" width="200"/>
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.13.44.png" width="200"/>
+<img src="Screenshots/img13.png" width="200"/>
+<img src="Screenshots/img14.png" width="200"/>
+<img src="Screenshots/img15.png" width="200"/>
+<img src="Screenshots/img16.png" width="200"/>
 
 ---
 
 ### New Image Added on UI
-<img src="Screenshots/Simulator Screen Shot - iPhone 13 - 2025-11-18 at 15.13.59.png" width="250"/>
+<img src="Screenshots/img17.png" width="250"/>
 
 ---
 
 ### UserDefaults (.plist File)
-<!-- <img src="2_47_57PM.png"/> -->
 <kbd><img src="Screenshots/img123.png" width="450"/></kbd>
 
 
