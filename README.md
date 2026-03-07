@@ -82,7 +82,7 @@ Each layer(VIPER) of Project has its own responsibility — ensuring that logic,
 ### Dashboard with Random Images
 <img src="Screenshots/img10.png" width="250"/>
 <img src="Screenshots/img11.png" width="250"/>
-<img src="Screenshots/img12png" width="250"/>
+<img src="Screenshots/img12.png" width="250"/>
 
 ---
 
